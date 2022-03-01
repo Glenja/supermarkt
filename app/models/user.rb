@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :lists
   belongs_to :household
+
+  validates :name, presence: true
 end
