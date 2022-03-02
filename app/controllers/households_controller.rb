@@ -8,7 +8,7 @@ class HouseholdsController < ApplicationController
  end
 
  def update
-  @household = Household.find(params[:id])
+    @household = Household.find(params[:id])
     if @household.update(household_params)
       @household.save
       redirect_to household_path(@household)
