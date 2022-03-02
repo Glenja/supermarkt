@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # and just add the household_id to the user instance
   def create
     super do |resource|
-      if resource.main_user_email.empty?
+      if resource.main_user_email == ""
         household = Household.create
         resource.household = household
       else

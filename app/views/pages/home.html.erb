@@ -5,9 +5,9 @@
       </p>
     </div>
     <div class="buttonbox">
-      <div><%= link_to "New Household", "#{root_path}", class: "btn btn-main-green" %></div>
-      <div><%= link_to "Join Household", "#{root_path}", class: "btn btn-main-blue" %></div>
-      <div><%= link_to "Log in", "#{root_path}", class: "btn btn-main-blue" %></div>
+      <div><%= link_to "New Household", new_user_registration_path, class: "btn btn-main-green" %></div>
+      <div><%= link_to "Join Household", new_user_registration_path, class: "btn btn-main-blue" %></div>
+      <div><%= link_to "Log in", user_session_path, class: "btn btn-main-blue" %></div>
     </div>
   </div>
 </body>

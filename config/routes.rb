@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :create, :update, :destroy]
     end
   end
-  resources :households, only: [:new, :create, :show] do
+  resources :households, only: [:new, :create, :show, :edit, :update] do
     resources :orders, only: [:index, :show, :new, :create] do
       resources :lists, only: [:new, :create]
     end
