@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <%if current_page =! (root_path)%>
+    <%if current_page = (root_path)%>
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
     <%end%>
