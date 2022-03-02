@@ -1,21 +1,33 @@
 <h1>Order show</h1>
 
-<p>By category</p>
-<p>By A-Z</p>
-<p>By Z-A</p>
+<div data-controller="order-show">
+<div class="btn btn-primary" data-action="click->order-show#categorise">By Category</div>
+<div class="btn btn-primary" data-action="click->order-show#az">By A-Z</div>
+<div class="btn btn-primary" data-action="click->order-show#za">By Z-A</div>
 
+<%# create a class which hides content display:none; and shows content display:block; %>
+<%# assign this class by default to By category %>
+<%# on click, assign the active class to the clicked target and remove it from the other two targets %>
 
 <%# list by category %>
+
+<div class="hide-content" data-order-show-target="category">
 <% @items_category.each do |item| %>
 <%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
 <% end %>
+</div>
 
 <%# list by a-z %>
+<div class="" data-order-show-target="az">
 <% @items_az.each do |item| %>
 <%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
 <% end %>
+</div>
 
 <%# list by z-a %>
+<div class="hide-content" data-order-show-target="za">
 <% @items_za.each do |item| %>
 <%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
 <% end %>
+</div>
+</div>
