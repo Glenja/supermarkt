@@ -14,11 +14,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # and just add the household_id to the user instance
   def create
     super do |resource|
-      if resource.main_user_email.nil?
+      if resource.main_user_email == ""
         household = Household.create
         resource.household = household
       else
-        main_user = Household.find_by email: resource.main_user_email
+        main_user = User.find_by email: resource.main_user_email
         resource.household = main_user.household
       end
       resource.save
@@ -53,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :household])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :household, :main_user_email])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
