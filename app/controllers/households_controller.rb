@@ -1,6 +1,8 @@
 class HouseholdsController < ApplicationController
 
   def show
+    @household = Household.find(params[:id])
+    @orders = @household.orders
   end
 
  def edit
