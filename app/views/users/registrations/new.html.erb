@@ -30,10 +30,11 @@
       <%= f.input :main_user_email,
                   placeholder: "Main user email",
                   label: false %>
+      <%= f.input :photo, as: :file %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+      <%= f.button :submit, "Sign up", class: "btn btn-main-green" %>
     </div>
   <% end %>
 </div>
