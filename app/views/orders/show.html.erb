@@ -1,0 +1,21 @@
+<h1>Order show</h1>
+
+<p>By category</p>
+<p>By A-Z</p>
+<p>By Z-A</p>
+
+
+<%# list by category %>
+<% @items_category.each do |item| %>
+<%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
+<% end %>
+
+<%# list by a-z %>
+<% @items_az.each do |item| %>
+<%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
+<% end %>
+
+<%# list by z-a %>
+<% @items_za.each do |item| %>
+<%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
+<% end %>
