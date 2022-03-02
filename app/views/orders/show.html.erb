@@ -4,10 +4,7 @@
 <div class="btn btn-primary" data-action="click->order-show#categorise">By Category</div>
 <div class="btn btn-primary" data-action="click->order-show#az">By A-Z</div>
 <div class="btn btn-primary" data-action="click->order-show#za">By Z-A</div>
-
-<%# create a class which hides content display:none; and shows content display:block; %>
-<%# assign this class by default to By category %>
-<%# on click, assign the active class to the clicked target and remove it from the other two targets %>
+<div class="btn btn-primary" data-action="click->order-show#list">By list</div>
 
 <%# list by category %>
 
@@ -30,4 +27,12 @@
 <%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
 <% end %>
 </div>
+
+<%# list of lists %>
+<div class="hide-content" data-order-show-target="list">
+<% @lists.each do |list| %>
+<%=list.title%>, <%= list.user.name%><br>
+<% end %>
+</div>
+
 </div>
