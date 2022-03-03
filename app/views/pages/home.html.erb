@@ -12,7 +12,7 @@
         <% if user_signed_in? %>
           <%= link_to "#{current_user.household.name}'s Household", household_path(current_user), class: "btn btn-main-green" %>
         <% else %>
-          <%= link_to "Sign Up", user_session_path, class: "btn btn-main-blue" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-main-blue" %>
         <%end%>
 
       <div>
