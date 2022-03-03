@@ -20,8 +20,22 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @order = Order.new
   end
 
   def create
+    @order = Order.new(order_params)
+    @household = Household.find(params[:household_id])
+    @order.household = @household
+
+    if @order.save
+      redirect_to household_order_path(@household, @order)
+    else
+      render 'households/show'
+    end
+  end
+
+  def order_params
+    params.require(:order).permit(:end_date)
   end
 end

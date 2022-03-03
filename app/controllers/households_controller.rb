@@ -1,6 +1,9 @@
 class HouseholdsController < ApplicationController
 
   def show
+    @household = Household.find(params[:id])
+    @orders = Order.where("end_date > ? AND household_id = ?", Time.now, @household.id)
+    @order = Order.new
   end
 
 
