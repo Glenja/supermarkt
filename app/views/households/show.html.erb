@@ -10,6 +10,8 @@
       <h2><%= @orders.first.end_date %></h2>
     </div>
   </div>
-  <%= link_to "New order", new_household_order_path(@household), class: "btn btn-main-green" %>
-  <%= link_to "Previous orders", household_orders_path(@household) %>
+  <div class="buttonbox mt-5">
+    <%= link_to "New order", new_household_order_path(@household), class: "btn btn-main-green" %>
+    <%= link_to "Previous orders", household_orders_path(@household) %>
+  </div>
 </div>
