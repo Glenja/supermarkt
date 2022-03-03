@@ -1,17 +1,22 @@
 <div class="container text-center">
   <h2 class="my-5">Current Household orders</h2>
 
-  <div class="card-order">
-    <div class="p-5 d-flex justify-content-around" style="background-color: #49AA8C;">
-      <img src="https://kitt.lewagon.com/placeholder/users/Papillard" class="card-order-user avatar-large" />
-      <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="card-order-user avatar-large" />
-    </div>
-    <div class="card-order-infos">
-      <h2><%= @orders.first.end_date %></h2>
-    </div>
-  </div>
   <div class="buttonbox mt-5">
     <%= link_to "New order", new_household_order_path(@household), class: "btn btn-main-green" %>
-    <%= link_to "Previous orders", household_orders_path(@household) %>
   </div>
+
+  <% @orders.each do |order| %>
+    <div class="card-order my-3">
+      <div class="p-5 d-flex justify-content-around" style="background-color: #49AA8C;">
+        <img src="https://kitt.lewagon.com/placeholder/users/Papillard" class="card-order-user avatar-large" />
+        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="card-order-user avatar-large" />
+        <img src="https://kitt.lewagon.com/placeholder/users/monsieurpaillard" class="card-order-user avatar-large" />
+      </div>
+      <div class="card-order-infos justify-content-end">
+        <h2><%= order.end_date %></h2>
+      </div>
+    </div>
+  <% end %>
+
+  <%= link_to "Previous orders", household_orders_path(@household) %>
 </div>
