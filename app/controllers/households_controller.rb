@@ -1,6 +1,25 @@
 class HouseholdsController < ApplicationController
 
   def show
+    @household = Household.find(params[:id])
+    @orders = Order.where("end_date > ? AND household_id = ?", Time.now, @household.id)
+    @order = Order.new
+  end
+
+
+  def new
+    @household = Household.new
+  end
+
+  def create
+    @household = Household.new(household_params)
+    current_user.household = @household
+    if @household.save
+      current_user.save
+      redirect_to household_path(@household)
+    else
+      render :new
+    end
   end
 
  def edit
