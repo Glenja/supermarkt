@@ -5,37 +5,23 @@ export default class extends Controller {
   connect() {
     console.log("hello from items_controller!")
   };
+
   apiQuery () {
 
-    console.log(this.queryTarget.innerHTML)
+    console.log(this.queryTarget.value)
 
     console.log("querying the database")
-    fetch('https://api.spoonacular.com/food/ingredients/autocomplete?query=appl&apiKey=1613fe995a224494910194cdb1b5401f')
+    fetch(`https://api.spoonacular.com/food/ingredients/autocomplete?query=${this.queryTarget.value}&apiKey=1613fe995a224494910194cdb1b5401f`)
     .then(response => response.json())
-    .then(data => console.log(data));
-
-
-
-    // const searchIngredients = query => {
-    //   console.log("searching API")
-    //   //Forming the query URL
-    //   const API_KEY = '1613fe995a224494910194cdb1b5401f';
-    //   let numberResults = 6
-    //   const url = 'https://api.spoonacular.com/food/ingredients/autocomplete?'+
-    //   'apiKey='+ API_KEY +
-    //   '&query='+ query +
-    //   '&number=' + numberResults
-    //   console.log(query);
-    //   console.log(API_KEY);
-    //   console.log(numberResults);
-
-    //   //Sending request
-    //   const response = fetch(url);
-    //   const ingredientResults = response.json();//convert response to JSON
-    //   outputHTML(ingredientResults);
-    //   console.log(ingredientResults);
-    //   console.log(response);
-    // }
+    .then((data) => {
+      console.log(data);
+      data.forEach((result) => {
+        const searchResult = `<li class="search-inline-item">
+        <p>${result.name}</p>
+        </li>`
+        results.insertAdjacentHTML("beforeend",searchResult)
+      })
+    });
   }
 }
 
