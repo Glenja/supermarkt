@@ -2,15 +2,15 @@
 <br>
   <p><%= @list.user.name.capitalize %>'s list</p>
 <hr>
-
-<div class="form" data-controller="items" data-action="submit->items#apiQuery">
+<%=  %>
+<div class="form" data-controller="items" data-action="keyup->items#apiQuery" data-items-key-value=<%= ENV["SPOONACULAR_API_KEY"] %>>
   <%= simple_form_for [ @user, @list, @item ] do |f| %>
     <%= f.input :name, label: false, input_html: { "data-items-target" => "query" } %>
     <%= f.submit "Add item", class: "btn btn-primary" %>
   <% end %>
 </div>
 
-<ul id="results">
+<ul id="results" data-controller="items" >
   <%# search results from API will be inserted here %>
 </ul>
 

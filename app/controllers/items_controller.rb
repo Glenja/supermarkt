@@ -6,6 +6,8 @@ class ItemsController < ApplicationController
     @list = List.find(params[:list_id])
     @item = Item.new
     @query = params[:query]
+    raise
+    @item
     # redirect_to user_list_path(current_user, @list)
   end
 
