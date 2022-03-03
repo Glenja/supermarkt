@@ -1,0 +1,38 @@
+<h1>Order show</h1>
+
+<div data-controller="order-show">
+<div class="btn btn-primary" data-action="click->order-show#categorise">By Category</div>
+<div class="btn btn-primary" data-action="click->order-show#az">By A-Z</div>
+<div class="btn btn-primary" data-action="click->order-show#za">By Z-A</div>
+<div class="btn btn-primary" data-action="click->order-show#list">By list</div>
+
+<%# list by category %>
+
+<div class="hide-content" data-order-show-target="category">
+<% @items_category.each do |item| %>
+<%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
+<% end %>
+</div>
+
+<%# list by a-z %>
+<div class="" data-order-show-target="az">
+<% @items_az.each do |item| %>
+<%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
+<% end %>
+</div>
+
+<%# list by z-a %>
+<div class="hide-content" data-order-show-target="za">
+<% @items_za.each do |item| %>
+<%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
+<% end %>
+</div>
+
+<%# list of lists %>
+<div class="hide-content" data-order-show-target="list">
+<% @lists.each do |list| %>
+<%=list.title%>, <%= list.user.name%><br>
+<% end %>
+</div>
+
+</div>
