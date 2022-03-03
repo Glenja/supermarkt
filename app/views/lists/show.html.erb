@@ -5,12 +5,14 @@
 
 <div class="form" data-controller="items" data-action="submit->items#apiQuery">
   <%= simple_form_for [ @user, @list, @item ] do |f| %>
-    <div data-items-target="query">
-    <%= f.input :name, label: false %>
-    </div>
+    <%= f.input :name, label: false, input_html: { "data-items-target" => "query" } %>
     <%= f.submit "Add item", class: "btn btn-primary" %>
   <% end %>
 </div>
+
+<ul id="results">
+  <%# search results from API will be inserted here %>
+</ul>
 
 <% @list.items.each do |item| %>
   <div class="list-item">
