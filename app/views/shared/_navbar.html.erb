@@ -30,7 +30,7 @@
             <%= link_to "#{current_user} Household dashboard", household_path(current_user), class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "MyLists", "#", class: "nav-link" %>
+            <%= link_to "MyLists", user_lists_path(current_user), class: "nav-link" %>
           </li>
            <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, class: "nav-link" %>
