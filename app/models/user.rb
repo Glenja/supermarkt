@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :lists
-  belongs_to :household
+  belongs_to :household, optional: true
   has_one_attached :photo
 
   validates :name, presence: true
