@@ -2,7 +2,7 @@
   <h2 class="my-5">Household orders</h2>
 
   <div class="buttonbox mt-5">
-    <%= link_to "Back to household", household_orders_path(@orders.first.household), class: "btn btn-main-blue" %>
+    <%= link_to "Back to household", household_path(@orders.first.household), class: "btn btn-main-blue" %>
   </div>
 
   <% @orders.each do |order| %>

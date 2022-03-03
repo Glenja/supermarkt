@@ -5,18 +5,31 @@
     <%= link_to "New order", new_household_order_path(@household), class: "btn btn-main-green" %>
   </div>
 
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
   <% @orders.each do |order| %>
-    <div class="card-order my-3">
-      <div class="p-5 d-flex justify-content-around" style="background-color: #49AA8C;">
-        <img src="https://kitt.lewagon.com/placeholder/users/Papillard" class="card-order-user avatar-large" />
-        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="card-order-user avatar-large" />
-        <img src="https://kitt.lewagon.com/placeholder/users/monsieurpaillard" class="card-order-user avatar-large" />
+    <%= link_to household_order_path(@household, order), class: "text-decoration-none text-dark" do %>
+      <div class="card-order my-3">
+        <div class="p-5 d-flex justify-content-around" style="background-color: #49AA8C;">
+          <img src="https://kitt.lewagon.com/placeholder/users/Papillard" class="card-order-user avatar-large" />
+          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="card-order-user avatar-large" />
+          <img src="https://kitt.lewagon.com/placeholder/users/monsieurpaillard" class="card-order-user avatar-large" />
+        </div>
+        <div class="card-order-infos justify-content-end">
+          <h2><%= order.end_date %></h2>
+        </div>
       </div>
-      <div class="card-order-infos justify-content-end">
-        <h2><%= order.end_date %></h2>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 
   <%= link_to "Previous orders", household_orders_path(@household) %>
 </div>
+
+  <%= simple_form_for [ @household, @order ] do |f| %>
+    <%= f.input :end_date, as: :date, html5: true %>
+    <br>
+    <%= f.submit %>
+  <% end %>
