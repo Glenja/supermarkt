@@ -12,18 +12,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   # keep the original functionality from the devise parent class create method
   # and just add the household_id to the user instance
-  def create
-    super do |resource|
-      if resource.main_user_email.empty?
-        household = Household.create
-        resource.household = household
-      else
-        main_user = User.find_by email: resource.main_user_email
-        resource.household = main_user.household
-      end
-      resource.save
-    end
-  end
+  # def create
+  #   super do |resource|
+  #     if resource.main_user_email == ""
+  #       household = Household.create
+  #       resource.household = household
+  #     else
+  #       main_user = User.find_by email: resource.main_user_email
+  #       resource.household = main_user.household
+  #     end
+  #     resource.save
+  #   end
+  # end
 
   # GET /resource/edit
   # def edit

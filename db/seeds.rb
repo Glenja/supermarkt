@@ -103,49 +103,49 @@ puts "lists created"
 puts "creating items..."
 
 15.times do
-  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_1.id)
+  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_1.id, price: [*1..3].sample)
 end
 
 15.times do
-  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_2.id)
+  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_2.id, price: [*1..3].sample)
 end
 
 15.times do
-  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_3.id)
+  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_3.id, price: [*1..3].sample)
 end
 
 15.times do
-  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_4.id)
+  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_4.id, price: [*1..3].sample)
 end
 
 15.times do
-  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_5.id)
+  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_5.id, price: [*1..3].sample)
 end
 
 15.times do
-  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_6.id)
+  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_6.id, price: [*1..3].sample)
 end
 
 15.times do
-  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_7.id)
+  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_7.id, price: [*1..3].sample)
 end
 
 15.times do
-  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_8.id)
+  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_8.id, price: [*1..3].sample)
 end
 
 15.times do
-  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_9.id)
+  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_9.id, price: [*1..3].sample)
 end
 
 15.times do
-  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_10.id)
+  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_10.id, price: [*1..3].sample)
 end
 
 15.times do
-  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_11.id)
+  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_11.id, price: [*1..3].sample)
 end
 
 15.times do
-  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_12.id)
+  Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_12.id, price: [*1..3].sample)
 end

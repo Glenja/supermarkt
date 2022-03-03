@@ -1,21 +1,57 @@
 <h1>Order show</h1>
 
-<p>By category</p>
-<p>By A-Z</p>
-<p>By Z-A</p>
+<div data-controller="order-show">
+  <div class="btn btn-primary" data-action="click->order-show#categorise">By Category</div>
+  <div class="btn btn-primary" data-action="click->order-show#az">By A-Z</div>
+  <div class="btn btn-primary" data-action="click->order-show#za">By Z-A</div>
+  <div class="btn btn-primary" data-action="click->order-show#list">By list</div>
+  <div class="btn btn-primary" data-action="click->order-show#split">£</div>
 
+  <%# list by category %>
 
-<%# list by category %>
-<% @items_category.each do |item| %>
-<%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
-<% end %>
+  <div class="" data-order-show-target="category">
+    <%= @items_category[0].category %><br>
+    <%= @items_category[0].name%>, <%= @items_category[0].quantity%><%=@items_category[0].unit%>, <%=@items_category[0].category%><br>
+    <% @items_category.each_cons(2) do |item| %>
+      <% if item[0].category != item[1].category%>
+        <%= item[1].category %><br>
+      <% end %>
+      <%=item[1].name%>, <%= item[1].quantity%><%=item[1].unit%>, <%=item[1].category%><br>
+    <% end %>
+  </div>
 
-<%# list by a-z %>
-<% @items_az.each do |item| %>
-<%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
-<% end %>
+  <%# list by a-z %>
+  <div class="hide-content" data-order-show-target="az">
+    <% @items_az.each do |item| %>
+      <%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
+    <% end %>
+  </div>
 
-<%# list by z-a %>
-<% @items_za.each do |item| %>
-<%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
-<% end %>
+  <%# list by z-a %>
+  <div class="hide-content" data-order-show-target="za">
+    <% @items_za.each do |item| %>
+      <%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
+    <% end %>
+  </div>
+
+  <%# list of lists %>
+  <div class="hide-content" data-order-show-target="list">
+    <% @lists.each do |list| %>
+    <%# TODO: link lists to relevant list using @list_path(list) %>
+      <%=list.title%>, <%= list.user.name%><br>
+    <% end %>
+  </div>
+
+  <%# user cost breakdown %>
+
+  <div class="hide-content" data-order-show-target="split">
+    <table>
+    <% @all_items_by_user.each do |array| %>
+    <tr><th><%=array[0].name%></th>
+    <% total_price = 0 %>
+    <% array[1].each { |item|  total_price += item.price} %>
+    <th>£<%= total_price%></th></tr>
+    <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<%= button_to "Back to order", household_order_path(@list.order.household), method: "get", class: 'btn btn-primary'%>
+<br>
+  <p><%= @list.user.name.capitalize %>'s list</p>
+<hr>
+
+<div class="form" data-controller="items" data-action="submit->items#apiQuery">
+  <%= simple_form_for [ @user, @list, @item ] do |f| %>
+    <%= f.input :name, label: false, input_html: { "data-items-target" => "query" } %>
+    <%= f.submit "Add item", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<ul id="results">
+  <%# search results from API will be inserted here %>
+</ul>
+
+<% @list.items.each do |item| %>
+  <div class="list-item">
+    <p><%= item.name %></p>
+    <p><%= item.quantity %> <%= item.unit %></p>
+    <hr>
+  <br>
+<% end %>

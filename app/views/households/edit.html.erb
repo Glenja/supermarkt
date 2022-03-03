@@ -1,0 +1,17 @@
+<div class="maincontainer">
+  <div>
+    <h1 style="text-align: center">SUPERMARKT</h1>
+  </div>
+  <div class="form-container container" >
+    <%= simple_form_for @household do |f| %>
+    <%= f.input :name, placeholder: 'give us a nickname' %>
+    <%= f.input :address, placeholder: 'enter postcode' %>
+    <%= f.input :supermarket, :collection => %w[Tesco Sainsburys Waitrose M&S] %>
+    <br>
+    <%= f.submit %>
+    <% end %>
+  </div >
+
+
+
+</div>
