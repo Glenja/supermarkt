@@ -3,13 +3,12 @@
   <h2 class="my-5">Current Household orders</h2>
 
   <div class="buttonbox mt-5">
-    <%= link_to "New order", new_household_order_path(@household), class: "btn btn-main-green" %>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-sm-green" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      New order
+    </button>
   </div>
 
-  <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
 
   <% @orders.each do |order| %>
     <%= link_to household_order_path(@household, order), class: "text-decoration-none text-dark" do %>
@@ -29,8 +28,23 @@
   <%= link_to "Previous orders", household_orders_path(@household) %>
 </div>
 
-  <%= simple_form_for [ @household, @order ] do |f| %>
-    <%= f.input :end_date, as: :date, html5: true %>
-    <br>
-    <%= f.submit %>
-  <% end %>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Choose an end date</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <%= simple_form_for [ @household, @order ] do |f| %>
+            <%= f.input :end_date, as: :date, html5: true %>
+            <br>
+            <div class="buttonbox" data-bs-dismiss="modal">
+                <%= f.button :submit, "Create", class: "btn btn-sm-green" %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
