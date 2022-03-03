@@ -9,7 +9,12 @@
       <%= link_to "New Household", new_household_path, class: "btn btn-main-green" %>
       </div>
       <div>
-       <%= link_to "HOUSEHOLD DASHBOARD INTERPELATE", household_path(current_user), class: "btn btn-main-green" %>
+        <% if user_signed_in? %>
+          <%= link_to "#{current_user.household.name}'s Household", household_path(current_user), class: "btn btn-main-green" %>
+        <% else %>
+          <%= link_to "Sign Up", user_session_path, class: "btn btn-main-blue" %>
+        <%end%>
+
       <div>
         <% if user_signed_in? %>
           <%= link_to "#{current_user.name.capitalize}'s dashboard", household_path(current_user), class: "btn btn-main-blue" %>
