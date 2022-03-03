@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["category", "az", "za", "list"]
+  static targets = ["category", "az", "za", "list", "split"]
   connect() {
     console.log("hello from StimulusJS")
   }
@@ -10,7 +10,7 @@ export default class extends Controller {
     this.azTarget.className = "hide-content"
     this.zaTarget.className = "hide-content"
     this.listTarget.className = "hide-content"
-    console.log(this.categoryTarget)
+    this.splitTarget.className = "hide-content"
   }
   az() {
     // console.log("az")
@@ -18,6 +18,7 @@ export default class extends Controller {
     this.azTarget.className = ""
     this.zaTarget.className = "hide-content"
     this.listTarget.className = "hide-content"
+    this.splitTarget.className = "hide-content"
   }
   za() {
     // console.log("za")
@@ -25,6 +26,7 @@ export default class extends Controller {
     this.azTarget.className = "hide-content"
     this.zaTarget.className = ""
     this.listTarget.className = "hide-content"
+    this.splitTarget.className = "hide-content"
   }
   list() {
     // console.log("list")
@@ -32,5 +34,14 @@ export default class extends Controller {
     this.azTarget.className = "hide-content"
     this.zaTarget.className = "hide-content"
     this.listTarget.className = ""
+    this.splitTarget.className = "hide-content"
+  }
+  split() {
+    // console.log("list")
+    this.categoryTarget.className = "hide-content"
+    this.azTarget.className = "hide-content"
+    this.zaTarget.className = "hide-content"
+    this.listTarget.className = "hide-content"
+    this.splitTarget.className = ""
   }
 }
