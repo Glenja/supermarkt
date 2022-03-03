@@ -2,9 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["category", "az", "za", "list", "split"]
-  connect() {
-    console.log("hello from StimulusJS")
-  }
+
   categorise() {
     this.categoryTarget.className = ""
     this.azTarget.className = "hide-content"
@@ -30,6 +28,7 @@ export default class extends Controller {
   }
   list() {
     // console.log("list")
+    console.log(this)
     this.categoryTarget.className = "hide-content"
     this.azTarget.className = "hide-content"
     this.zaTarget.className = "hide-content"
