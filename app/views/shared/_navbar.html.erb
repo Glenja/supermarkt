@@ -1,24 +1,33 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
+  <div class="container-fluid" style=" display: flex; justify-content: space-around;">
 
+
+    <div class="nav-item" >
+      <% if user_signed_in? %>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "logo avatar", alt: "avatar" %>
+        <% else %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "logo avatar"%>
+        <% end %>
+      <% else %>
+        <%= image_tag "/assets/images/X.png", class: "logo", alt: "avatar" %>
+      <% end %>
+    </div>
      <%= link_to root_path, class: "text-decoration-none" do%>
         <h1 style="color: white;"><strong>SUPERMARKT<strong></h1>
       <%end%>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style=>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
         <br>
-        <li class="nav-item" >
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-<%# this line above is a placeholder for avatar %>
-          </li>
           <li class="nav-item" style="color: white">
-            <%= link_to "#{current_user.household.name} Household dashboard", "#", class: "nav-link" %>
+            <%= link_to "#{current_user.household.name} Household dashboard", household_path(current_user), class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "MyLists", "#", class: "nav-link" %>
@@ -26,8 +35,6 @@
            <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, class: "nav-link" %>
           </li>
-
-
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
