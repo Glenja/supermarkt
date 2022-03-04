@@ -45,6 +45,7 @@ puts "household created"
 
 puts "creating users..."
 
+
 user_1 = User.create(name: Faker::Hipster.word, email: "user_1@email.com", password: 'changeme', password_confirmation: 'changeme', household_id: household_1.id)
 user_2 = User.create(name: Faker::Hipster.word, email: "user_2@email.com", password: 'changeme', password_confirmation: 'changeme', household_id: household_1.id)
 user_3 = User.create(name: Faker::Hipster.word, email: "user_3@email.com", password: 'changeme', password_confirmation: 'changeme', household_id: household_1.id)
