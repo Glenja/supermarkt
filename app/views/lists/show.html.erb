@@ -1,23 +1,26 @@
-<%= button_to "Back to order", household_order_path(@list.order.household), method: "get", class: 'btn btn-primary'%>
+<%= button_to "Back to order", household_order_path(@list.order.household), method: "get", class: 'btn-sm-blue'%>
 <br>
   <p><%= @list.user.name.capitalize %>'s list</p>
 <hr>
-<%=  %>
-<div class="form" data-controller="items" data-action="keyup->items#apiQuery" data-items-key-value=<%= ENV["SPOONACULAR_API_KEY"] %>>
-  <%= simple_form_for [ @user, @list, @item ] do |f| %>
-    <%= f.input :name, label: false, input_html: { "data-items-target" => "query" } %>
-    <%= f.submit "Add item", class: "btn btn-primary" %>
+
+<div class="list-items">
+  <div class="form" data-controller="items" data-action="keyup->items#apiQuery" data-items-key-value=<%= ENV["SPOONACULAR_API_KEY"] %>>
+    <%= simple_form_for [ @user, @list, @item ] do |f| %>
+      <%= f.input :name, label: false, input_html: { "data-items-target" => "query" }, placeholder: 'Start typing' %>
+      <%= f.input :category, collection: ['Dairy','Meat','Vegetables', 'Fruit', 'Herbs & Spices', 'Pasta', 'Other'] %>
+      <%= f.input :price, as: :integer %>
+      <%# need to update the data-action to only fire on the f.input name %>
+      <%= f.input :quantity, as: :integer %>
+      <%= f.input :unit %>
+      <%= f.submit "Add item", class: "btn-sm-blue" %>
+    <% end %>
+  </div>
+  <ul id="results" data-controller="items" >
+    <%# search results from API will be inserted here %>
+  </ul>
+
+  <% @list.items.each do |item| %>
+    <div class="list-item">
+      <p><%= item.name %>, <%= item.quantity %><%=item.unit %>, <%= item.category %></p>
   <% end %>
 </div>
-
-<ul id="results" data-controller="items" >
-  <%# search results from API will be inserted here %>
-</ul>
-
-<% @list.items.each do |item| %>
-  <div class="list-item">
-    <p><%= item.name %></p>
-    <p><%= item.quantity %> <%= item.unit %></p>
-    <hr>
-  <br>
-<% end %>
