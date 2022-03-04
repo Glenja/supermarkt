@@ -19,6 +19,8 @@ Order.destroy_all
 puts "deleting households..."
 Household.destroy_all
 
+
+
 # create household
 
 puts "creating household..."
@@ -43,20 +45,20 @@ puts "household created"
 # puts "orders created"
 # create users
 
-puts "creating users..."
+# puts "creating users..."
 
 
-user_1 = User.create(name: Faker::Hipster.word, email: "user_1@email.com", password: 'changeme', password_confirmation: 'changeme', household_id: household_1.id)
-user_2 = User.create(name: Faker::Hipster.word, email: "user_2@email.com", password: 'changeme', password_confirmation: 'changeme', household_id: household_1.id)
-user_3 = User.create(name: Faker::Hipster.word, email: "user_3@email.com", password: 'changeme', password_confirmation: 'changeme', household_id: household_1.id)
-user_4 = User.create(name: Faker::Hipster.word, email: "user_4@email.com", password: 'changeme', password_confirmation: 'changeme', household_id: household_1.id)
+user_1 = User.create(name: "Jack", email: "jack@email.com", password: 'changeme', household_id: household_1.id)
+user_2 = User.create(name: "Oli", email: "oli@email.com", password: 'changeme', household_id: household_1.id)
+user_3 = User.create(name: "Seb", email: "seb@email.com", password: 'changeme', household_id: household_1.id)
+user_4 = User.create(name: "Nick", email: "nick@email.com", password: 'changeme', household_id: household_1.id)
 
-puts "user 1 error message: #{user_1.errors.full_messages}"
-puts "user 2 error message: #{user_2.errors.full_messages}"
-puts "user 3 error message: #{user_3.errors.full_messages}"
-puts "user 4 error message: #{user_4.errors.full_messages}"
+# puts "user 1 error message: #{user_1.errors.full_messages}"
+# puts "user 2 error message: #{user_2.errors.full_messages}"
+# puts "user 3 error message: #{user_3.errors.full_messages}"
+# puts "user 4 error message: #{user_4.errors.full_messages}"
 
-puts "users created"
+# puts "users created"
 
 # puts "creating lists..."
 
