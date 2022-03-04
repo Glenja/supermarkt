@@ -1,4 +1,95 @@
-<h1>LISTS INDEX PAGE</h1>
-<% @lists.each do |list| %>
-  <%= list%>
-<% end %>
+<h1>TEXT "INDEX FOR MYLISTS"
+
+
+<body>
+	<section>
+		<div class="container">
+			<div class="card">
+				<div class="content">
+					<div class="imgBx">
+						<img src="https://cdn.mos.cms.futurecdn.net/XM8scaSf7gWsiN9jjowikf-1024-80.jpg.webp=">
+					</div>
+					<div class="contentBx">
+						<h3>LIST NAME</h3>
+					</div>
+				</div>
+				<ul class="sci">
+					<li>
+						<a href="">USERS</a>
+					</li>
+					<li>
+						<a href="">PRICE</a>
+					</li>
+					<li>
+						<a href="">SHTI</a>
+					</li>
+				</ul>
+			</div>
+			<div class="card">
+				<div class="content">
+					<div class="imgBx">
+						<img src="https://cdn.mos.cms.futurecdn.net/XM8scaSf7gWsiN9jjowikf-1024-80.jpg.webp">
+					</div>
+					<div class="contentBx">
+						<h3>LIST NAME</h3>
+					</div>
+				</div>
+				<ul class="sci">
+					<li>
+						<a href="">USERS</a>
+					</li>
+					<li>
+						<a href="">PRICE</a>
+					</li>
+					<li>
+						<a href="">SHIT</a>
+					</li>
+				</ul>
+			</div>
+			<div class="card">
+				<div class="content">
+					<div class="imgBx">
+						<img src="https://cdn.mos.cms.futurecdn.net/XM8scaSf7gWsiN9jjowikf-1024-80.jpg.webp">
+					</div>
+					<div class="contentBx">
+						<h3>LIST NAME</h3>
+					</div>
+				</div>
+				<ul class="sci">
+					<li>
+						<a href="">USERS</a>
+					</li>
+					<li>
+						<a href="">PRICE</a>
+					</li>
+					<li>
+						<a href="">SHIT</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</body>
+
+
+
+/
+
+
+
+<div class="d-flex">
+    <div class="flip-card">
+      <% @lists.each do |list| %>
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+            </div>
+             <div class="flip-card-back">
+              <h1> INFO </h1>
+              <p>About </p>
+              <p>L</p>
+              </div>
+          </div>
+        <% end %>
+   </div>
+</div>
