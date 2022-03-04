@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
     @order.household = @household
 
     if @order.save
-      redirect_to household_order_path(@household, @order)
+      redirect_to user_lists_path(current_user)
     else
       render 'households/show'
     end
