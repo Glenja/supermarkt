@@ -11,6 +11,12 @@ export default class extends Controller {
 
   addText(event) {
     document.getElementById('item_name').value = event.target.innerHTML
+    // console.log(this)
+    // fetch(`https://api.spoonacular.com/food/products/search?query=${event.target.innerHTML}&number=1&apiKey=${this.keyValue}`)
+    // .then(response => response.json())
+    // .then((data) => {
+    //   console.log(data)
+    // })
   }
 
   apiQuery () {
