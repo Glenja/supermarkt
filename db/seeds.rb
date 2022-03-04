@@ -46,12 +46,6 @@ puts "orders created"
 puts "creating users..."
 
 
-# Currently there is no household id, uncomment and delete below once we have this
-user_1 = User.create(email: "user_1@email.com", encrypted_password: "123456", household_id: household_1.id)
-user_2 = User.create(email: "user_2@email.com", encrypted_password: "123456", household_id: household_1.id)
-user_3 = User.create(email: "user_3@email.com", encrypted_password: "123456", household_id: household_1.id)
-user_4 = User.create(email: "user_4@email.com", encrypted_password: "123456", household_id: household_1.id)
-
 user_1 = User.create(name: Faker::Hipster.word, email: "user_1@email.com", password: 'changeme', password_confirmation: 'changeme', household_id: household_1.id)
 user_2 = User.create(name: Faker::Hipster.word, email: "user_2@email.com", password: 'changeme', password_confirmation: 'changeme', household_id: household_1.id)
 user_3 = User.create(name: Faker::Hipster.word, email: "user_3@email.com", password: 'changeme', password_confirmation: 'changeme', household_id: household_1.id)
