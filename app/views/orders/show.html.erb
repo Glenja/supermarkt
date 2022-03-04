@@ -35,9 +35,10 @@
   <%# list by category %>
 
   <div class="" data-order-show-target="category">
-    <div class= "categoryHeader1" data-order-show-target="stickyTop"><%= @items_category[0].category%>
-      <%= @items_category[0].name%>, <%= @items_category[0].quantity%><%=@items_category[0].unit%>, <%=@items_category[0].category%><br>
+    <div class= "categoryHeader1" data-order-show-target="stickyTop">
+      <%= @items_category[0].category%>
     </div>
+    <%= @items_category[0].name%>, <%= @items_category[0].quantity%><%=@items_category[0].unit%>, <%=@items_category[0].category%><br>
       <% @items_category.each_cons(2) do |item| %>
         <% if item[0].category != item[1].category%>
           <div class= "categoryHeader2">

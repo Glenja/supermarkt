@@ -1,4 +1,4 @@
-<%= button_to "Back to order", household_order_path(@list.order.household), method: "get", class: 'btn-sm-blue'%>
+<%= button_to "Back to order", household_order_path(household_id: @list.order.household.id, id: @list.order), method: "get", class: 'btn-sm-blue'%>
 <br>
   <p><%= @list.user.name.capitalize %>'s list</p>
 <hr>
