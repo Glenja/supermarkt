@@ -4,11 +4,14 @@ class ItemsController < ApplicationController
 
   def create
     @list = List.find(params[:list_id])
-    @item = Item.new
-    @query = params[:query]
-    raise
-    @item
-    # redirect_to user_list_path(current_user, @list)
+    @item = Item.new(item_params)
+    @item.name = params[:item][:name]
+    @item.list = @list
+    if @item.save
+      redirect_to user_list_path(current_user, @list)
+    else
+      render 'lists/show'
+    end
   end
 
   def update
@@ -18,26 +21,8 @@ class ItemsController < ApplicationController
   end
 
   private
+
   def item_params
+    params.require(:item).permit(:name, :quantity, :aisle, :category, :price, :list, :unit)
   end
-
-  def request_api(url)
-    response = Excon.get(
-      url,
-      headers: {
-        'Spoonacular-Host' => URI.parse(url).host,
-        'Spoonacular-Key' => ENV.fetch(SPOONACULAR_API_KEY)
-      }
-    )
-    return nil if response.status != 200
-    x = JSON.parse(response.body)
-  end
-
-  def product_search(input)
-    raise
-    request_api(
-      "https://api.spoonacular.com/food/products/suggest?query=#{input}&apiKey=#{SPOONACULAR_API_KEY}"
-    )
-  end
-
 end
