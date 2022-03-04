@@ -2,9 +2,17 @@
 
 
 
-
-
 <body>
+
+<%= simple_form_for [current_user, @list] do |f| %>
+  <%= f.submit %>
+<% end %>
+
+
+
+
+
+<%= link_to "New List", "#", class: "btn btn-main-blue" %>
 	<section>
 		<div class="container">
 			<div class="card">
@@ -80,10 +88,10 @@
 
 
 
-<div class="d-flex">
+<%# <div class="d-flex">
     <div class="flip-card">
       <% @lists.each do |list| %>
-          <div class="flip-card-inner">
+          <%# <div class="flip-card-inner">
             <div class="flip-card-front">
               <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
             </div>
@@ -92,7 +100,7 @@
               <p>About </p>
               <p>L</p>
               </div>
-          </div>
-        <% end %>
-   </div>
-</div>
+          </div> %>
+        <%# <% end %>
+   <%# </div>
+</div> %>
