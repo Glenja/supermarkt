@@ -18,8 +18,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new
     @list.user = current_user
-    @list.order = Order.first
-    # raise
+    @list.order = Order.find(params[:list][:order_id])
     if @list.save
       redirect_to user_list_path(current_user, @list)
     else

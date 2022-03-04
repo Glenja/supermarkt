@@ -5,6 +5,7 @@
 <body>
 
 <%= simple_form_for [current_user, @list] do |f| %>
+  <%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true %>
   <%= f.submit class: "btn btn-main-blue"%>
 <% end %>
 
