@@ -27,7 +27,7 @@
         <% if user_signed_in? %>
         <br>
           <li class="nav-item" style="color: white">
-            <%= link_to "#{current_user} Household dashboard", household_path(current_user), class: "nav-link" %>
+            <%= link_to "Household dashboard", household_path(current_user.household_id), class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "MyLists", user_lists_path(current_user), class: "nav-link" %>
