@@ -37,3 +37,27 @@
   margin: 10px;
   width: 85vw;
 }
+
+.btn-list-icon{
+  background-color: rgb(233, 216, 202);
+  height: 50px;
+  width: 50px;
+  ;
+  border: 2px solid #2F4858;
+  border-radius: 50%;
+}
+
+.btn-list-icon:hover{
+  background-color: #2F4858;
+  color: rgb(233, 216, 202);
+}
+
+.btn-div{
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.center-text{
+  text-align: center;
+}
