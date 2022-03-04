@@ -6,8 +6,9 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @users = User.where(household_id: @order)
     @order = Order.find(params[:id])
+    @household = Household.find(@order.household.id)
+    @users = User.where(household_id: @order)
     @lists = List.where(order_id: @order)
     @all_items = []
     @lists.each { |list| @all_items << Item.where(list_id: list) }

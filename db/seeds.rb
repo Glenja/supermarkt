@@ -22,7 +22,7 @@ Household.destroy_all
 # create household
 
 puts "creating household..."
-household_1 = Household.create( name: "Love shack")
+household_1 = Household.create( name: "Love shack", address:"E1 6RB")
 puts "household error message: #{household_1.errors.full_messages}"
 puts "household created"
 
