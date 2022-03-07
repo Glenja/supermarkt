@@ -1,51 +1,31 @@
-<body style="height: 100" %>
-  <div class="signup home-img" style="background-image: url('https://media.istockphoto.com/photos/healthy-fresh-rainbow-colored-fruits-and-vegetables-background-picture-id1208790371?k=20&m=1208790371&s=612x612&w=0&h=6BngNrl8TColGkvSGJUKFKIM5bv31Nc8MvQhmmC2LlM=');">
-    <div class="textbox">
-     <button type="button" class="btn btn-main-green" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Willkommen Zu SUPERMARKT!
-      <br>Find Out More!
-    </button>
-    </div>
+<body class = "signup", style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('https://media.istockphoto.com/photos/healthy-fresh-rainbow-colored-fruits-and-vegetables-background-picture-id1208790371?k=20&m=1208790371&s=612x612&w=0&h=6BngNrl8TColGkvSGJUKFKIM5bv31Nc8MvQhmmC2LlM=');" >
+    <div class = "textbox">
+      <h1><strong>WILLKOMMEN ZU SUPERMARKT<strong><h1>
+      <h4>Streamline the group shop<h4>
+
     <div class="buttonbox">
-      <div>
-      <% if user_signed_in? %>
-      <%= link_to "Join A New Household And Streamline The Group Shop", new_household_path, class: "btn btn-main-blue" %>
-      <% else %>
-      <%end%>
-
-      </div>
-      <div>
+        <div>
         <% if user_signed_in? %>
-          <%= ""%>
-          <% else%>
-          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-main-blue" %>
-        <%end%>
-
-      <div>
-        <% if user_signed_in? %>
-          <%= "" %>
+        <%= link_to "Join Now", new_household_path, class: "btn btn-main-blue" %>
         <% else %>
-          <%= link_to "Log in", user_session_path, class: "btn btn-main-blue" %>
         <%end%>
+        </div>
+        <div>
+          <% if user_signed_in? %>
+            <%= ""%>
+            <% else%>
+            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-main-blue" %>
+          <%end%>
+        </div>
+        <div>
+          <% if user_signed_in? %>
+            <%= "" %>
+          <% else %>
+            <%= link_to "Log in", user_session_path, class: "btn btn-main-blue" %>
+          <%end%>
+        </div>
+        <%# <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
       </div>
     </div>
   </div>
 </body>
-
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">WHAT WHAT WHAT</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <p> TEXT TEXT TEXT </p>
-      </div>
-    </div>
-  </div>
-</div>
