@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 2022_03_07_101606) do
     t.string "supermarket"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "items", force: :cascade do |t|
