@@ -1,6 +1,6 @@
 <div class="maincontainer">
   <div>
-    <h1 style="text-align: center">SUPERMARKT</h1>
+    <p style="text-align: center">Insert your order details below</p>
   </div>
   <div class="form-container container" >
     <%= simple_form_for @household do |f| %>
@@ -8,7 +8,7 @@
     <%= f.input :address, placeholder: 'enter postcode' %>
     <%= f.input :supermarket, :collection => %w[Tesco Sainsburys Waitrose M&S] %>
     <br>
-    <%= f.submit %>
+    <%= f.submit class: "btn-sm-green"%>
     <% end %>
   </div >
 

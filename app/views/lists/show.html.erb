@@ -1,26 +1,44 @@
-<%= button_to "Back to order", household_order_path(household_id: @list.order.household.id, id: @list.order), method: "get", class: 'btn-sm-blue'%>
-<br>
-  <p><%= @list.user.name.capitalize %>'s list</p>
-<hr>
+<div class="container-list">
+  <h1 class="center-text"><%= @list.user.name.capitalize %>'s list</h1>
+  <div class="list-form">
+    <div class="form" data-controller="items"  data-items-key-value=<%= ENV["SPOONACULAR_API_KEY"] %>>
+      <%= simple_form_for [ @user, @list, @item ] do |f| %>
+        <span data-action="keyup->items#apiQuery">
+        <%= f.input :name, label: false, input_html: { "data-items-target" => "query" }, placeholder: 'Start typing to add to your list...' %>
+        </span>
+        <ul id="results" data-controller="items" >
+          <%# search results from API will be inserted here %>
+        </ul>
+        <span class="quantity-unit">
+          <%= f.input :quantity, as: :integer %>
+          <%= f.input :unit %>
+        </span>
+        <span class="aisle-price">
+          <%= f.input :category, :label => "Aisle" %>
+          <%= f.input :price, :label => "Price (£)", as: :integer %>
+        </span>
+        <%= f.submit "Add item", class: "btn-sm-blue" %>
+      <% end %>
+    </div>
+  </div>
 
-<div class="list-items">
-  <div class="form" data-controller="items" data-action="keyup->items#apiQuery" data-items-key-value=<%= ENV["SPOONACULAR_API_KEY"] %>>
-    <%= simple_form_for [ @user, @list, @item ] do |f| %>
-      <%= f.input :name, label: false, input_html: { "data-items-target" => "query" }, placeholder: 'Start typing' %>
-      <%= f.input :category, collection: ['Dairy','Meat','Vegetables', 'Fruit', 'Herbs & Spices', 'Pasta', 'Other'] %>
-      <%= f.input :price, as: :integer %>
-      <%# need to update the data-action to only fire on the f.input name %>
-      <%= f.input :quantity, as: :integer %>
-      <%= f.input :unit %>
-      <%= f.submit "Add item", class: "btn-sm-blue" %>
+  <div class="" data-order-show-target="category">
+    <div class= "categoryHeader1" data-order-show-target="stickyTop">
+      <% unless @items_category[0].nil?%>
+        <%=  @items_category[0].category %>
+      <% end %>
+    </div>
+    <% unless @items_category[0].nil? %>
+      <%= @items_category[0].name.capitalize%>, <%= @items_category[0].quantity%><%=@items_category[0].unit%><br>
+        <% @items_category.each_cons(2) do |item| %>
+          <% if item[0].category != item[1].category%>
+            <div class= "categoryHeader2">
+              <%= item[1].category %>
+            </div>
+          <% end %>
+        <%=item[1].name.capitalize%>, <%= item[1].quantity%><%=item[1].unit%><br>
+      <% end %>
     <% end %>
   </div>
-  <ul id="results" data-controller="items" >
-    <%# search results from API will be inserted here %>
-  </ul>
-
-  <% @list.items.each do |item| %>
-    <div class="list-item">
-      <p><%= item.name %>, <%= item.quantity %><%=item.unit %>, <%= item.category %></p>
-  <% end %>
+  <%= button_to "Back to order", household_order_path(household_id: @list.order.household.id, id: @list.order), method: "get", class: 'btn-sm-green'%>
 </div>
