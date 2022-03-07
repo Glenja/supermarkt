@@ -2,6 +2,15 @@
 <div class="container text-center">
   <h2 class="my-5">Current Household orders</h2>
 
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Add a housemate</button>
+      <div id="myDropdown" class="dropdown-content, show">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+  </div>
+
   <div class="buttonbox mt-5">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-sm-green" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -25,7 +34,7 @@
     <% end %>
   <% end %>
 
-  <%= link_to "Previous orders", household_orders_path(@household), class: "text-decoration-none text-dark btn-sm-blue" %>
+  <%= link_to "Previous orders", household_orders_path(@household), class: "text-decoration-none btn-sm-blue" %>
 </div>
 
 <!-- Modal -->

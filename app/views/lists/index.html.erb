@@ -2,94 +2,25 @@
 
 
 
-<body>
+<%# <body> %>
 
 <%= simple_form_for [current_user, @list] do |f| %>
-  <%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true %>
+<%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true%>
+  <p>select an order for your new list</p>
   <%= f.submit class: "btn btn-main-blue"%>
 <% end %>
 
 
-
-
-
-	<%# <section>
-		<div class="container">
-			<div class="card">
-				<div class="content">
-					<div class="imgBx">
-						<img src="https://cdn.mos.cms.futurecdn.net/XM8scaSf7gWsiN9jjowikf-1024-80.jpg.webp=">
-					</div>
-					<div class="contentBx">
-						<h3>LIST NAME</h3>
-					</div>
-				</div>
-				<ul class="sci">
-					<li>
-						<a href="">USERS</a>
-					</li>
-					<li>
-						<a href="">PRICE</a>
-					</li>
-					<li>
-						<a href="">SHTI</a>
-					</li>
-				</ul>
-			</div>
-			<div class="card">
-				<div class="content">
-					<div class="imgBx">
-						<img src="https://cdn.mos.cms.futurecdn.net/XM8scaSf7gWsiN9jjowikf-1024-80.jpg.webp">
-					</div>
-					<div class="contentBx">
-						<h3>LIST NAME</h3>
-					</div>
-				</div>
-				<ul class="sci">
-					<li>
-						<a href="">USERS</a>
-					</li>
-					<li>
-						<a href="">PRICE</a>
-					</li>
-					<li>
-						<a href="">SHIT</a>
-					</li>
-				</ul>
-			</div>
-			<div class="card">
-				<div class="content">
-					<div class="imgBx">
-						<img src="https://cdn.mos.cms.futurecdn.net/XM8scaSf7gWsiN9jjowikf-1024-80.jpg.webp">
-					</div>
-					<div class="contentBx">
-						<h3>LIST NAME</h3>
-					</div>
-				</div>
-				<ul class="sci">
-					<li>
-						<a href="">USERS</a>
-					</li>
-					<li>
-						<a href="">PRICE</a>
-					</li>
-					<li>
-						<a href="">SHIT</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</section>
-</body> %>
-
-
-
-
-
-<div class="d-flex">
-    <div class="flip-card">
-      <%= @lists.each do |list| %>
-          <% %>
+<div class="d-flex" style = >
+    <div class="container" style = "flex-direction: column">
+      <% @current_user.lists.each do |list| %>
+          <%= link_to user_list_path(current_user, list), class: "text-decoration-none text-dark" do %>
+          <div class="card-order my-3">
+          <div class="p-5 d-flex justify-content-around" style="background-color: #659B91;">
+          <%= list.user.name.capitalize %>
+          </div>
+        </div>
         <% end %>
-   <% </div>
+      <% end %>
+   </div>
 </div>
