@@ -36,12 +36,21 @@ class HouseholdsController < ApplicationController
     end
  end
 
-
   def map
+    @household = Household.find(params[:household_id])
+    households = Household.all.geocoded.map do |household|
+      {
+        lat: household.latitude,
+        lng: household.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { household: household }),
+        id: household.id
+      }
+    end
+    @marker = households.select { |household| household[:id] == @household.id }
   end
 
 
-private
+  private
 
   def household_params
     params.require(:household).permit(:name, :address, :supermarket)
