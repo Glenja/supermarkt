@@ -1,13 +1,44 @@
+.container-list{
+  margin: 0 8px;
+}
+
 .list-items{
   width: 100%;
+}
+
+.list-items{
+  margin: 8px;
 }
 
 #results{
   background-color: white;
   border-radius: 5px;
-  margin: 5px;
+  padding: 0px;
+}
+
+.hide{
+  display: none;
 }
 
 #results li{
   list-style: none;
+  border-bottom: 1px solid grey;
+  padding-left: 8px;
+}
+
+#results li p{
+  margin: 0;
+}
+
+.aisle-price{
+  display: flex;
+}
+
+.quantity-unit{
+  display: flex;
+  margin: 0;
+}
+
+.inputs{
+  margin:0;
 }
