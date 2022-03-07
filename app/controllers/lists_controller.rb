@@ -10,9 +10,9 @@ class ListsController < ApplicationController
 
   def show
     @user = current_user
-
     @list = List.find(params[:id])
     @item = Item.new
+    @items_category= @list.items.sort_by(&:category)
   end
 
   def create
