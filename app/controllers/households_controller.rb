@@ -49,7 +49,6 @@ class HouseholdsController < ApplicationController
     @marker = households.select { |household| household[:id] == @household.id }
   end
 
-
   private
 
   def household_params

@@ -12,11 +12,28 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
-    })
+      style: "mapbox://styles/mapbox/streets-v11",
+    });
+
+    this.map.addControl(
+      new MapboxDirections({
+          accessToken: mapboxgl.accessToken
+      }),
+      'bottom-left'
+    );
+
+    this.map.addControl(
+      new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+        }),
+      'top-left'
+    );
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
   }
+
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
