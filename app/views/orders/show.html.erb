@@ -34,62 +34,147 @@
 
   <%# list by category %>
 
+<% if @items_category.empty? %>
+  <p>please create a list</p>
+<% else %>
   <div class="" data-order-show-target="category">
     <div class= "categoryHeader1" data-order-show-target="stickyTop">
       <%= @items_category[0].category%>
     </div>
-    <%= @items_category[0].name%>, <%= @items_category[0].quantity%><%=@items_category[0].unit%>, <%=@items_category[0].category%><br>
-      <% @items_category.each_cons(2) do |item| %>
-        <% if item[0].category != item[1].category%>
+    <div class = "item-container">
+      <div class = "item-name">
+        <%= @items_category[0].name%>
+      </div>
+      <div class = "item-unit">
+        <%= @items_category[0].quantity%><%=@items_category[0].unit%>
+      </div>
+      <div class = "item-tickbox">
+        <%= link_to mark_as_done_path(@items_category[0]) do%>
+          <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+        <% end %>
+      </div>
+    </div>
+        <% @items_category.each_cons(2) do |item| %>
+          <% if item[0].category != item[1].category%>
           <div class= "categoryHeader2">
             <%= item[1].category %>
           </div>
         <% end %>
-        <%=item[1].name%>, <%= item[1].quantity%><%=item[1].unit%>, <%=item[1].category%><br>
+    <div class = "item-container">
+      <div class = "item name">
+        <%=item[1].name%>
+      </div>
+      <div class = "item-unit">
+        <%= item[1].quantity%><%=item[1].unit%>, <%=item[1].done?%>
+      </div>
+      <div class = "item-tickbox">
+        <%= link_to mark_as_done_path(item[1]) do%>
+          <div>
+            <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+          </div>
+        <% end %>
+      </div>
+    </div>
       <% end %>
   </div>
 
 
-  <%# list by a-z %>
-  <div class="hide-content" data-order-show-target="az">
-    <% @items_az.each do |item| %>
-      <%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
-    <% end %>
-  </div>
-
-  <%# list by z-a %>
-  <div class="hide-content" data-order-show-target="za">
-    <% @items_za.each do |item| %>
-      <%=item.name%>, <%= item.quantity%><%=item.unit%>, <%=item.category%><br>
-    <% end %>
-  </div>
-
-  <%# list of lists %>
-  <div class="hide-content" data-order-show-target="list">
-    <% @lists.each do |list| %>
-    <%# TODO: link lists to relevant list using @list_path(list) %>
-      <%=list.title%>, <%= list.user.name%><br>
-    <% end %>
-  </div>
-
-  <%# user cost breakdown %>
-
-  <div class="hide-content" data-order-show-target="split">
-    <table>
-    <% @all_items_by_user.each do |array| %>
-    <tr><th><%=array[0].name%></th>
-    <% total_price = 0 %>
-    <% array[1].each { |item|  total_price += item.price} %>
-    <th>£<%= total_price%></th></tr>
-    <% end %>
-    </table>
+    <%# list by a-z %>
+    <div class="hide-content" data-order-show-target="az">
+      <% @items_az.each do |item| %>
+        <div class = "item-container">
+          <div class = "item-name">
+            <%=item.name%>
+          </div>
+          <div class = "item-unit">
+            <%= item.quantity%><%=item.unit%>
+          </div>
+          <div class = "item-tickbox">
+            <%= link_to mark_as_done_path(item) do%>
+              <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
 
-  <%= link_to household_path(@household) do %>
-    <div class="btn-main-blue">
-      <h3>Back to household</h3>
+    <%# list by z-a %>
+    <div class="hide-content" data-order-show-target="za">
+      <% @items_za.each do |item| %>
+        <div class = "item-container">
+          <div class = "item-name">
+            <%=item.name%>
+          </div>
+          <div class = "item-unit">
+            <%= item.quantity%><%=item.unit%>
+          </div>
+          <div class = "item-tickbox">
+            <%= link_to mark_as_done_path(item) do%>
+              <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
+
+    <%# list of lists %>
+    <div class="hide-content" data-order-show-target="list">
+      <% @lists.each do |list| %>
+      <%# TODO: link lists to relevant list using @list_path(list) %>
+        <%=list.title%>, <%= list.user.name%><br>
+      <% end %>
+    </div>
+
+    <%# user cost breakdown %>
+
+    <div class="hide-content" data-order-show-target="split">
+      <table>
+      <% @all_items_by_user.each do |array| %>
+      <tr><th><%=array[0].name%></th>
+      <% total_price = 0 %>
+      <% array[1].each { |item|  total_price += item.price} %>
+      <th>£<%= total_price%></th></tr>
+      <% end %>
+      </table>
+      </div>
+
+    <%= link_to household_path(@household) do %>
+      <div class="btn-main-blue">
+        <h3>Back to household</h3>
+      </div>
+    <% end %>
+<p>
+  <% unless @done_items.empty? %>
+    <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      <div class = "center mb-3">
+        Completed items
+      </div>
+    </a>
+    <div class="collapse" id="collapseExample">
+      <% @done_items.each do |item| %>
+        <div class = "item-container checked-text">
+          <div class = "item-name checked">
+            <%=item.name%>
+          </div>
+          <div class = "item-unit checked-text">
+            <%= item.quantity%><%=item.unit%>
+          </div>
+          <div class = "item-tickbox">
+            <%= link_to mark_as_done_path(item) do%>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  <% else %>
+  <% end %>
+</div>
+</div>
 
 
 </div>
