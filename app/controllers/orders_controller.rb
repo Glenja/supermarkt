@@ -15,9 +15,10 @@ class OrdersController < ApplicationController
     @all_items.flatten!
     # @users.each { |user| @all_items.each {|item| } }
     @all_items_by_user = @all_items.group_by { |item| item.list.user }
-    @items_category = @all_items.sort_by(&:category)
-    @items_az = @all_items.sort_by(&:name)
-    @items_za = @all_items.sort_by(&:name).reverse
+    @items_category = filter_done_false(@all_items.sort_by(&:category))
+    @items_az = filter_done_false(@all_items.sort_by(&:name))
+    @items_za = filter_done_false(@all_items.sort_by(&:name).reverse)
+    @done_items = filter_done_true(@all_items)
   end
 
   def new
@@ -38,5 +39,13 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:end_date)
+  end
+
+  def filter_done_false(list)
+    list.select { |item| item.done? == false}
+  end
+
+  def filter_done_true(list)
+    list.select { |item| item.done?}
   end
 end

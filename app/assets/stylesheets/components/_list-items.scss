@@ -1,0 +1,33 @@
+.item-container{
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding: 0px 15px;
+}
+
+.item-name{
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+.checked-text{
+  text-decoration: line-through;
+}
+
+.item-unit{
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+
+.item-tickbox{
+  grid-column-start: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  justify-self: end;
+  align-self: center;
+}
+
+.center{
+  text-align: center;
+}

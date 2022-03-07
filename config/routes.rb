@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :create, :update, :destroy]
     end
   end
+  get "/items/:id", to: "items#mark_done", as: :mark_as_done
+
   resources :households, only: [:new, :create, :show, :edit, :update] do
     resources :orders, only: [:index, :show, :new, :create] do
       resources :lists, only: [:new, :create]
