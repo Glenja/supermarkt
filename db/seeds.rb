@@ -18,7 +18,8 @@ puts "deleting orders..."
 Order.destroy_all
 puts "deleting households..."
 Household.destroy_all
-
+puts "deleting housemates..."
+Housemate.destroy_all
 
 
 # create household
@@ -45,7 +46,7 @@ puts "household created"
 # puts "orders created"
 # create users
 
-# puts "creating users..."
+puts "creating users..."
 
 
 user_1 = User.create(name: "Jack", email: "jack@email.com", password: 'changeme', household_id: household_1.id)
@@ -53,12 +54,26 @@ user_2 = User.create(name: "Oli", email: "oli@email.com", password: 'changeme', 
 user_3 = User.create(name: "Seb", email: "seb@email.com", password: 'changeme', household_id: household_1.id)
 user_4 = User.create(name: "Nick", email: "nick@email.com", password: 'changeme', household_id: household_1.id)
 
-# puts "user 1 error message: #{user_1.errors.full_messages}"
-# puts "user 2 error message: #{user_2.errors.full_messages}"
-# puts "user 3 error message: #{user_3.errors.full_messages}"
-# puts "user 4 error message: #{user_4.errors.full_messages}"
+puts "user 1 error message: #{user_1.errors.full_messages}"
+puts "user 2 error message: #{user_2.errors.full_messages}"
+puts "user 3 error message: #{user_3.errors.full_messages}"
+puts "user 4 error message: #{user_4.errors.full_messages}"
 
-# puts "users created"
+puts "users created"
+
+puts "creating housemates"
+
+housemate_1 = Housemate.create(user: user_1)
+housemate_2 = Housemate.create(user: user_2)
+housemate_3 = Housemate.create(user: user_3)
+housemate_4 = Housemate.create(user: user_4)
+
+puts "housemate 1 error message: #{housemate_1.errors.full_messages}"
+puts "housemate 2 error message: #{housemate_2.errors.full_messages}"
+puts "housemate 3 error message: #{housemate_3.errors.full_messages}"
+puts "housemate 4 error message: #{housemate_4.errors.full_messages}"
+
+puts "housemates created"
 
 # puts "creating lists..."
 
