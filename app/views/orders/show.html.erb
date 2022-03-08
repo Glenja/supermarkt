@@ -164,6 +164,15 @@
         <div class= "categoryHeader2" data-order-show-target="stickyTop">
           Estimated amount owed
         </div>
+      <% end %>
+    </div>
+    <div class="btn-container">
+      <%= link_to household_orders_path(@household), class:'text-decoration-none' do %>
+        <div class="btn-main-blue  text-decoration-none">
+          Back to Household
+        </div>
+      <% end %>
+
         <table class="table table-format">
         <% @all_items_by_user.each do |array| %>
         <tr><td><%=array[0].name%></td></th>
@@ -172,7 +181,7 @@
         <td>£<%= total_price.to_f%></td></tr>
         <% end %>
         </table>
-        </div>
+
 
         <%# button code here %>
 
