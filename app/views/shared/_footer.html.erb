@@ -1,14 +1,35 @@
 <div class="footer">
   <div class="footer-links">
-    <%= link_to user_lists_path(current_user) do %>
-      <i class="fas fa-list"></i>
+    <% if user_signed_in? %>
+      <%= link_to user_lists_path(current_user) do %>
+        <i class="fas fa-list"></i>
+      <%end%>
+    <%else%>
+      <%= link_to "#" do %>
+        <i class="fas fa-list"></i>
+      <% end %>
     <% end %>
-    <%= link_to "#" do %>
-      <i class="fas fa-house-user"></i>
-    <% end %>
-    <%= link_to household_map_path(current_user.household_id) do %>
-      <i class="fas fa-globe-americas"></i>
-    <% end %>
+
+      <%= link_to "#" do %>
+        <i class="fas fa-house-user"></i>
+      <% end %>
+
+      <% unless user_signed_in? %>
+        <%= link_to "#" do %>
+          <i class="fas fa-globe-americas"></i>
+         <% end %>
+      <%else%>
+        <% if current_user.household_id? %>
+         <%= link_to household_map_path(current_user.household_id) do %>
+          <i class="fas fa-globe-americas"></i>
+          <%end %>
+          <% else %>
+          <%= link_to "#" do %>
+        <i class="fas fa-globe-americas"></i>
+         <% end %>
+        <% end %>
+     <% end %>
+
   </div>
   <%# <div class="footer-copyright">
     <i class="fas fa-heart"></i> From <strong>Supermarkt </strong>Team
