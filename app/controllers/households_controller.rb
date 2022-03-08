@@ -1,7 +1,10 @@
 class HouseholdsController < ApplicationController
 
   def show
+    @users = User.all
     @household = Household.find(params[:id])
+    @housemates = Housemate.where(household_id: @household.id)
+    @household = current_user.household
     @orders = Order.where("end_date > ? AND household_id = ?", Time.now, @household.id)
     @order = Order.new
   end
@@ -9,11 +12,15 @@ class HouseholdsController < ApplicationController
 
   def new
     @household = Household.new
+    # @housemate = Housemate.find(params[:housemate_id])
   end
 
   def create
     @household = Household.new(household_params)
     current_user.household = @household
+    @new_housemate_ids = household_params[:housemate_ids].shift
+    @housemate = Housemate.find(@new_housemate_ids)
+    @household.housemates << @housemate
     if @household.save
       current_user.save
       redirect_to household_path(@household)
@@ -52,6 +59,6 @@ class HouseholdsController < ApplicationController
   private
 
   def household_params
-    params.require(:household).permit(:name, :address, :supermarket)
+    params.require(:household).permit(:name, :address, :supermarket, :housemate_ids => [])
   end
 end
