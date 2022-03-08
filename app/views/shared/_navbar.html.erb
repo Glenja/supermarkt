@@ -28,11 +28,11 @@
         <br>
           <% if current_user.household.present?%>
             <li class="nav-item" style="color: white">
-              <%= link_to "Household dashboard", household_path(current_user.household_id), class: "nav-link" %>
+              <%= link_to "Household Dashboard", household_path(current_user.household_id), class: "nav-link" %>
             </li>
           <%end%>
           <li class="nav-item">
-            <%= link_to "MyLists", user_lists_path(current_user), class: "nav-link" %>
+            <%= link_to "My Lists", user_lists_path(current_user), class: "nav-link" %>
           </li>
            <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>

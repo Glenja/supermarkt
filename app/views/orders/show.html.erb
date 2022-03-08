@@ -65,7 +65,7 @@
         <%=item[1].name%>
       </div>
       <div class = "item-unit">
-        <%= item[1].quantity%><%=item[1].unit%>, <%=item[1].done?%>
+        <%= item[1].quantity%><%=item[1].unit%>
       </div>
       <div class = "item-tickbox">
         <%= link_to mark_as_done_path(item[1]) do%>
@@ -81,6 +81,9 @@
 
     <%# list by a-z %>
     <div class="hide-content" data-order-show-target="az">
+    <div class= "categoryHeader2" data-order-show-target="stickyTop">
+      A-Z
+    </div>
       <% @items_az.each do |item| %>
         <div class = "item-container">
           <div class = "item-name">
@@ -103,6 +106,9 @@
 
     <%# list by z-a %>
     <div class="hide-content" data-order-show-target="za">
+      <div class= "categoryHeader2" data-order-show-target="stickyTop">
+        Z-A
+      </div>
       <% @items_za.each do |item| %>
         <div class = "item-container">
           <div class = "item-name">
@@ -123,30 +129,65 @@
 
     <%# list of lists %>
     <div class="hide-content" data-order-show-target="list">
-      <% @lists.each do |list| %>
-      <%# TODO: link lists to relevant list using @list_path(list) %>
-        <%=list.title%>, <%= list.user.name%><br>
-      <% end %>
+      <table class="table table-format">
+        <div class= "categoryHeader2" data-order-show-target="stickyTop">
+          Order lists
+        </div>
+
+          <% @lists.each do |list| %>
+          <%# TODO: link lists to relevant list using @list_path(list) %>
+          <%# test %>
+              <div class = item-container>
+                <div class = "item-name">
+                  <%=list.title%>
+                </div>
+                <div class = "item-unit">
+                  <%= list.user.name%>
+                </div>
+                <% if list.user ==  current_user%>
+                <div class = "item-tickbox">
+                  <%= link_to user_list_path(list.user, list) do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                    </svg>
+                <% end %>
+                </div>
+              </div>
+              <% end %>
+          <% end %>
+      </table>
     </div>
 
     <%# user cost breakdown %>
 
     <div class="hide-content" data-order-show-target="split">
-      <table>
+      <div class= "categoryHeader2" data-order-show-target="stickyTop">
+        Estimated amount owed
+      </div>
+      <table class="table table-format">
       <% @all_items_by_user.each do |array| %>
-      <tr><th><%=array[0].name%></th>
+      <tr><td><%=array[0].name%></td></th>
       <% total_price = 0 %>
       <% array[1].each { |item|  total_price += item.price} %>
-      <th>£<%= total_price%></th></tr>
+      <td>£<%= total_price.to_f%></td></tr>
       <% end %>
       </table>
       </div>
 
-    <%= link_to household_path(@household) do %>
-      <div class="btn-main-blue">
-        <h3>Back to household</h3>
-      </div>
-    <% end %>
+    <div class = "btn-container">
+      <%= link_to household_map_path(@household), class:'text-decoration-none' do %>
+        <div class="btn-main-green  text-decoration-none">
+          Ready to shop
+        </div>
+      <% end %>
+    </div>
+    <div class="btn-container">
+      <%= link_to household_path(@household), class:'text-decoration-none' do %>
+        <div class="btn-main-blue  text-decoration-none">
+          Back to household
+        </div>
+      <% end %>
+    </div>
 <p>
   <% unless @done_items.empty? %>
     <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -178,7 +219,5 @@
   <% end %>
 </div>
 </div>
-
-
 </div>
 </div>
