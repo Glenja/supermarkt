@@ -5,11 +5,28 @@
   grid-template-rows: 1fr 1fr;
   padding: 0px 15px;
   border-bottom: 3px #EEEEEE;
+  margin: 0px 2px;
+}
+
+.item-box-shadow{
+  box-shadow: 3px 3px #cfbeb0;
+}
+
+.category-box-shadow{
+  box-shadow: 3px 1px #cfbeb0;
 }
 
 .item-name{
   grid-column-start: 1;
   grid-row-start: 1;
+}
+
+.item-name-1{
+  grid-column-start: 1;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  align-self: center;
+  justify-self: center;
 }
 
 .checked-text{
@@ -29,6 +46,16 @@
   grid-row-end: 3;
   justify-self: end;
   align-self: center;
+}
+
+.item-owed{
+  grid-column-start: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  justify-self: center;
+  align-self: center;
+  font-style: italic;
+  padding: 5px 0px;
 }
 
 .center{
