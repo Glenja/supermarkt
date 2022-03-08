@@ -49,11 +49,45 @@ class HouseholdsController < ApplicationController
       {
         lat: household.latitude,
         lng: household.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { household: household }),
+        info_window: render_to_string(partial: "info_window", locals: { location: household }),
         id: household.id
       }
     end
-    @marker = households.select { |household| household[:id] == @household.id }
+    household_marker = households.select { |household| household[:id] == @household.id }
+    @markers = Supermarket.all.geocoded.map do |supermarket|
+      {
+        lat: supermarket.latitude,
+        lng: supermarket.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { location: supermarket })
+      }
+    end
+
+    @markers << household_marker.first
+  end
+
+  def route
+    @household = Household.find(params[:household_id])
+    @supermarket = Supermarket.find(params[:id])
+    households = Household.all.geocoded.map do |household|
+      {
+        lat: household.latitude,
+        lng: household.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { location: household }),
+        id: household.id
+      }
+    end
+    household_marker = households.select { |household| household[:id] == @household.id }
+    supermarkets = Supermarket.all.geocoded.map do |supermarket|
+      {
+        lat: supermarket.latitude,
+        lng: supermarket.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { location: supermarket }),
+        id: supermarket.id
+      }
+    end
+    supermarket_marker = supermarkets.select { |supermarket| supermarket[:id] == @supermarket.id }
+
+    @markers = [household_marker.first, supermarket_marker.first]
   end
 
   private

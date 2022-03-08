@@ -1,2 +1,3 @@
-<h2><%= household.name %></h2>
-<p><%= household.address %></p>
+  <h2><%= location.name %></h2>
+  <p><%= location.address %></p>
+  <%= link_to 'Directions', household_route_path(@household, location.id) %>

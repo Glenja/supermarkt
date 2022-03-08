@@ -13,27 +13,25 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v11",
+      center: [ -2.0677894217139507, 55.2970562 ],
+      zoom: 5
     });
 
+    this.#addMarkersToMap()
+    this.#fitMapToMarkers()
+    if (this.element.id === "directions") {
+      this.#addControlsToMap()
+    }
+  }
+
+  #addControlsToMap() {
     this.map.addControl(
       new MapboxDirections({
           accessToken: mapboxgl.accessToken
       }),
-      'bottom-left'
-    );
-
-    this.map.addControl(
-      new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl
-        }),
       'top-left'
     );
-
-    this.#addMarkersToMap()
-    this.#fitMapToMarkers()
   }
-
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {

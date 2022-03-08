@@ -1,17 +1,26 @@
-<div class="container text-center">
-  <h2 class="my-5">Household orders</h2>
-
-  <div class="buttonbox mt-5">
-    <%= link_to "Back to household", household_path(@orders.first.household), class: "btn btn-sm-blue" %>
+<div class="maincontainer text-center">
+  <div>
+    <h2 class="mt-2">Household Orders</h2>
   </div>
 
-<% @previous_orders.each do |order| %>
-    <%= link_to household_order_path(params[:household_id], order), class: "text-decoration-none text-dark" do %>
+    <div class="buttonbox">
+    <!-- Button trigger modal -->
+      <button type="button" class="btn btn-sm-green" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Create Order
+      </button>
+  </div>
+
+  <% @orders.each do |order| %>
+    <%= link_to household_order_path(@household, order), class: "text-decoration-none text-dark" do %>
       <div class="card-order my-3">
-        <div class="p-5 d-flex justify-content-around" style="background-color: #49AA8C;">
-          <img src="https://kitt.lewagon.com/placeholder/users/Papillard" class="card-order-user avatar-large" />
-          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="card-order-user avatar-large" />
-          <img src="https://kitt.lewagon.com/placeholder/users/monsieurpaillard" class="card-order-user avatar-large" />
+        <div class="p-5 d-flex justify-content-around" style="background-color: #659B91;">
+            <% @housemates.each do |h| %>
+              <% if h.user.photo.attached?  %>
+                <%= cl_image_tag h.user.photo.key, class: "card-order-user avatar-large" %>
+              <% else %>
+                <%= image_tag asset_path("unknown_user.png"), class: "card-order-user avatar-large" %>
+              <% end %>
+            <% end %>
         </div>
         <div class="card-order-infos justify-content-end">
           <h2><%= order.end_date %></h2>
@@ -19,4 +28,25 @@
       </div>
     <% end %>
   <% end %>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Choose an end date</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <%= simple_form_for [ @household, @order ] do |f| %>
+            <%= f.input :end_date, as: :date, html5: true %>
+            <br>
+            <div class="buttonbox" data-bs-dismiss="modal">
+                <%= f.button :submit, "Create", class: "btn btn-sm-green" %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
 </div>
