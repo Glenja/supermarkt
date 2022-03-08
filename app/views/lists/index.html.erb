@@ -3,12 +3,8 @@
 
 
 <%# <body> %>
+<h1>My Lists</h1>
 
-<%= simple_form_for [current_user, @list] do |f| %>
-<%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true%>
-  <p>select an order for your new list</p>
-  <%= f.submit class: "btn btn-main-blue"%>
-<% end %>
 
 
 <div class="d-flex" style = >
@@ -24,3 +20,9 @@
       <% end %>
    </div>
 </div>
+
+<%= simple_form_for [current_user, @list] do |f| %>
+<%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true%>
+  <p>choose an order for your new list</p>
+  <%= f.submit "New List", class: "btn btn-main-blue"%>
+<% end %>
