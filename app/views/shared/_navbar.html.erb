@@ -7,11 +7,9 @@
         <% if current_user.photo.attached? %>
           <%= cl_image_tag current_user.photo.key, class: "logo avatar", alt: "avatar" %>
         <% else %>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "logo avatar"%>
-        <% end %>
-      <% else %>
-        <%= image_tag "/assets/images/X.png", class: "logo", alt: "avatar" %>
+        <%= "" %>
       <% end %>
+      <%end%>
     </div>
      <%= link_to root_path, class: "text-decoration-none" do%>
         <h1 style="color: white;"><strong>SUPERMARKT</strong></h1>
