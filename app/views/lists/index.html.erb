@@ -1,26 +1,22 @@
+<div class = "maincontainer">
+  <%= simple_form_for [current_user, @list] do |f| %>
+  <%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true %>
+    <p>select an order for your new list</p>
+    <%= f.submit class: "btn btn-main-blue"%>
+  <% end %>
 
 
-
-
-<%# <body> %>
-
-<%= simple_form_for [current_user, @list] do |f| %>
-<%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true%>
-  <p>select an order for your new list</p>
-  <%= f.submit class: "btn btn-main-blue"%>
-<% end %>
-
-
-<div class="d-flex" style = >
-    <div class="container" style = "flex-direction: column">
-      <% @current_user.lists.each do |list| %>
-          <%= link_to user_list_path(current_user, list), class: "text-decoration-none text-dark" do %>
-          <div class="card-order my-3">
-          <div class="p-5 d-flex justify-content-around" style="background-color: #659B91;">
-          <%= list.user.name.capitalize %>
+  <div class="d-flex" style = >
+      <div class="container" style = "flex-direction: column">
+        <% @current_user.lists.each do |list| %>
+            <%= link_to user_list_path(current_user, list), class: "text-decoration-none text-dark" do %>
+            <div class="card-order my-3">
+            <div class="p-5 d-flex justify-content-around" style="background-color: #659B91;">
+            <%= list.user.name.capitalize %>
+            </div>
           </div>
-        </div>
+          <% end %>
         <% end %>
-      <% end %>
-   </div>
+    </div>
+  </div>
 </div>
