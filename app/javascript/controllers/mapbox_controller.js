@@ -17,17 +17,21 @@ export default class extends Controller {
       zoom: 5
     });
 
+    this.#addMarkersToMap()
+    this.#fitMapToMarkers()
+    if (this.element.id === "directions") {
+      this.#addControlsToMap()
+    }
+  }
+
+  #addControlsToMap() {
     this.map.addControl(
       new MapboxDirections({
           accessToken: mapboxgl.accessToken
       }),
       'top-left'
     );
-
-    this.#addMarkersToMap()
-    this.#fitMapToMarkers()
   }
-
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {

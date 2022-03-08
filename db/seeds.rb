@@ -25,7 +25,7 @@ Housemate.destroy_all
 # create household
 
 puts "creating household..."
-household_1 = Household.create( name: "Love shack", address:"E1 6RB")
+household_1 = Household.create( name: "Love shack", address:"e10 6rl")
 puts "household error message: #{household_1.errors.full_messages}"
 puts "household created"
 
@@ -160,3 +160,11 @@ puts "housemates created"
 # 15.times do
 #   Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_12.id, price: [*1..3].sample)
 # end
+
+
+# Supermarkets around Leyton
+Supermarket.create(name: 'Tesco', address: 'e10 5na')
+Supermarket.create(name: 'Asda', address: 'e10 5nh')
+Supermarket.create(name: 'Waitrose', address: 'e18 2na')
+Supermarket.create(name: "Sainsbury's", address: 'e17 7jy')
+Supermarket.create(name: 'Morrissons', address: 'e15 1hp')
