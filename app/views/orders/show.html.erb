@@ -131,7 +131,7 @@
     <div class="hide-content" data-order-show-target="list">
       <table class="table table-format">
         <div class= "categoryHeader2" data-order-show-target="stickyTop">
-          order lists
+          Order lists
         </div>
 
           <% @lists.each do |list| %>
@@ -174,11 +174,20 @@
       </table>
       </div>
 
-    <%= link_to household_path(@household), class:'text-decoration-none' do %>
-      <div class="btn-main-blue  text-decoration-none">
-        Back to household
-      </div>
-    <% end %>
+    <div class = "btn-container">
+      <%= link_to household_map_path(@household), class:'text-decoration-none' do %>
+        <div class="btn-main-green  text-decoration-none">
+          Ready to shop
+        </div>
+      <% end %>
+    </div>
+    <div class="btn-container">
+      <%= link_to household_path(@household), class:'text-decoration-none' do %>
+        <div class="btn-main-blue  text-decoration-none">
+          Back to household
+        </div>
+      <% end %>
+    </div>
 <p>
   <% unless @done_items.empty? %>
     <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
