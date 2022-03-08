@@ -174,17 +174,19 @@
       </table>
       </div>
 
+      <%# button code here %>
+
     <div class = "btn-container">
       <%= link_to household_map_path(@household), class:'text-decoration-none' do %>
         <div class="btn-main-green  text-decoration-none">
-          Ready to shop
+          Let's shop
         </div>
       <% end %>
     </div>
     <div class="btn-container">
       <%= link_to household_path(@household), class:'text-decoration-none' do %>
         <div class="btn-main-blue  text-decoration-none">
-          Back to household
+          Back to Household
         </div>
       <% end %>
     </div>
@@ -195,7 +197,7 @@
         Completed items
       </div>
     </a>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse.show collapse show" id="collapseExample">
       <% @done_items.each do |item| %>
         <div class = "item-container checked-text">
           <div class = "item-name checked">
