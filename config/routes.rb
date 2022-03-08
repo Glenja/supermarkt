@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/items/:id", to: "items#mark_done", as: :mark_as_done
 
   resources :households, only: [:new, :create, :show, :edit, :update] do
+    resources :housemates, only: [:edit, :update]
     resources :orders, only: [:index, :show, :new, :create] do
       resources :lists, only: [:new, :create]
     end

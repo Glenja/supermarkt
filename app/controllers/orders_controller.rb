@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
     @all_items = []
     @lists.each { |list| @all_items << Item.where(list_id: list) }
     @all_items.flatten!
+    @all_items.each { |item| item.name.capitalize! }
     # @users.each { |user| @all_items.each {|item| } }
     @all_items_by_user = @all_items.group_by { |item| item.list.user }
     @items_category = filter_done_false(@all_items.sort_by(&:category))

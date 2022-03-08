@@ -1,12 +1,17 @@
+.btn-container{
+  margin: 10px;
+}
+
 .btn-main-green {
   color: white;
   padding: 8px 24px;
   border-radius: 15px;
   opacity: 1;
   background-color: #659B91;
-  margin: 10px;
+  margin: auto;
   width: 90vw;
   border: 2px solid white;
+  text-align: center;
 }
 
 
@@ -16,7 +21,7 @@
   border-radius: 15px;
   opacity: 1;
   background-color: rgba(255, 135, 101, .9);
-  margin: 10px;
+  margin: auto;
   width: 90vw;
   text-align: center;
   text-decoration: none;
@@ -49,12 +54,12 @@
   background-color: rgb(233, 216, 202);
   height: 50px;
   width: 50px;
-  border: 2px solid white;
+  border: 2px solid #2F4858;
   border-radius: 50%;
 }
 
 .btn-list-icon:hover{
-  background-color: white;
+  background-color: #2F4858;
   color: rgb(233, 216, 202);
 }
 
