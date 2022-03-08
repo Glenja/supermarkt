@@ -145,3 +145,11 @@ user_4 = User.create(name: "Nick", email: "nick@email.com", password: 'changeme'
 # 15.times do
 #   Item.create(name: Faker::Food.ingredient, quantity: [*1..9].sample * 100, unit: "g", aisle: Faker::Food.ethnic_category, category: Faker::Food.ethnic_category, list_id: list_12.id, price: [*1..3].sample)
 # end
+
+
+# Supermarkets around Leyton
+Supermarket.create(name: 'Tesco', address: 'e10 5na')
+Supermarket.create(name: 'Asda', address: 'e10 5nh')
+Supermarket.create(name: 'Waitrose', address: 'e18 2na')
+Supermarket.create(name: "Sainsbury's", address: 'e17 7jy')
+Supermarket.create(name: 'Morrissons', address: 'e15 1hp')
