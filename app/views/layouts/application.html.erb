@@ -14,11 +14,16 @@
   </head>
 
   <body>
-    <%unless action_name == "home"  %>
-      <%= render 'shared/navbar' %>
-      <%= render 'shared/flashes' %>
-    <%end%>
+      <%unless action_name == "home"  %>
+        <%= render 'shared/navbar' %>
+        <%= render 'shared/flashes' %>
+      <%end%>
 
     <%= yield %>
+
+      <% unless action_name == "home" %>
+        <%= render 'shared/footer' %>
+      <%end%>
+
   </body>
 </html>
