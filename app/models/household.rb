@@ -1,6 +1,7 @@
 class Household < ApplicationRecord
   has_many :orders
-  has_many :users
+  has_many :users, through: :housemates
+  has_many :housemates
   # validates :address, presence: true
   # validates :name, presence: true
   geocoded_by :address

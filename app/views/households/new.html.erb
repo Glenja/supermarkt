@@ -1,10 +1,14 @@
 <div class="maincontainer">
-  <h1 class="center-text title">New Household</h1>
+   <h1 class="center-text title">New Household</h1>
   <div class="form-container container" >
-    <%= simple_form_for @household do |f| %>
-    <%= f.input :name %>
-    <%= f.input :address %>
-    <%= f.input :supermarket, :collection => %w[Asda Aldi Lidl Marks\ &\ Spencer Sainsburys Tesco Waitrose ] %>
+    <%= simple_form_for [ @household ] do |f| %>
+    <%= f.input :name, placeholder: 'give us a nickname' %>
+    <%= f.input :address, placeholder: 'enter postcode' %>
+    <%= f.input :supermarket, :collection => %w[Asda Aldi Lidl Marks\ &\ Spencer Tesco Sainsburys Waitrose] %>
+    <%= f.association :housemates, :label_method => lambda { |housemate| "#{housemate.user.name}" }, include_hidden: false %>
+    <%# <%= f.hidden_field :housemate_id, :value => @housemate.id %>
+    <br>
+
     <%= f.submit class: "btn-sm-green"%>
     <% end %>
   </div >

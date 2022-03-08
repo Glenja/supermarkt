@@ -2,15 +2,6 @@
 <div class="container text-center">
   <h2 class="my-5">Current Household orders</h2>
 
-  <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Add a housemate</button>
-      <div id="myDropdown" class="dropdown-content, show">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-      </div>
-  </div>
-
   <div class="buttonbox mt-5">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-sm-green" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -18,14 +9,16 @@
     </button>
   </div>
 
-
   <% @orders.each do |order| %>
     <%= link_to household_order_path(@household, order), class: "text-decoration-none text-dark" do %>
       <div class="card-order my-3">
         <div class="p-5 d-flex justify-content-around" style="background-color: #659B91;">
-          <img src="https://kitt.lewagon.com/placeholder/users/Papillard" class="card-order-user avatar-large" />
-          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="card-order-user avatar-large" />
-          <img src="https://kitt.lewagon.com/placeholder/users/monsieurpaillard" class="card-order-user avatar-large" />
+            <% @housemates.each do |h| %>
+              <%= h.user.name %>
+              <% if h.user.photo.attached?  %>
+                <%= cl_image_tag h.user.photo.key, class: "card-order-user avatar-large" %>
+              <% end %>
+            <% end %>
         </div>
         <div class="card-order-infos justify-content-end">
           <h2><%= order.end_date %></h2>
