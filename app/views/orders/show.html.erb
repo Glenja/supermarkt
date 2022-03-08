@@ -69,7 +69,7 @@
         </div>
         <div class = "item-tickbox">
           <%= link_to mark_as_done_path(item[1]) do%>
-            <div>
+        <div>
               <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
             </div>
           <% end %>
@@ -81,24 +81,25 @@
 
       <%# list by a-z %>
       <div class="hide-content" data-order-show-target="az">
-      <div class= "categoryHeader2 category-box-shadow" data-order-show-target="stickyTop">
-        A-Z
-      </div>
-        <% @items_az.each do |item| %>
-          <div class = "item-container item-box-shadow">
-            <div class = "item-name">
-              <%=item.name%>
+        <div class= "categoryHeader2 category-box-shadow" data-order-show-target="stickyTop">
+          A-Z
+        </div>
+          <% @items_az.each do |item| %>
+            <div class = "item-container item-box-shadow">
+              <div class = "item-name">
+                <%=item.name%>
+              </div>
+              <div class = "item-unit">
+                <%= item.quantity%><%=item.unit%>
+              </div>
+              <div class = "item-tickbox">
+                <%= link_to mark_as_done_path(item) do%>
+                  <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+                <% end %>
+              </div>
             </div>
-            <div class = "item-unit">
-              <%= item.quantity%><%=item.unit%>
-            </div>
-            <div class = "item-tickbox">
-              <%= link_to mark_as_done_path(item) do%>
-                <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-              <% end %>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
 
     <%# <%= link_to household_path(@household), class: "text-decoration-none" do %>
@@ -176,6 +177,7 @@
             </div>
         <% end %>
         </div>
+      </div>
 
         <%# button code here %>
 
