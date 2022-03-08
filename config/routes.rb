@@ -15,5 +15,6 @@ Rails.application.routes.draw do
       resources :lists, only: [:new, :create]
     end
     get "map", to: 'households#map', as: :map
+    get 'map/supermarket/:id', to: 'households#route', as: :route
   end
 end
