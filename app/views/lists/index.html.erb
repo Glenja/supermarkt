@@ -2,7 +2,7 @@
 <div class = "formcontainer">
   <%= simple_form_for [current_user, @list] do |f| %>
   <%= f.input :title, label: "Name Your List" %>
-  <%=f.label "Which order is this for?" %>
+  <%= f.label "Which order is this for ?----->" %>
   <%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true %>
     <%= f.submit "New List", class: "btn btn-main-green", id: "btn-blue-margin"%>
   <% end %>
