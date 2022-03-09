@@ -7,19 +7,23 @@
         <% if current_user.photo.attached? %>
           <%= cl_image_tag current_user.photo.key, class: "logo avatar", alt: "avatar" %>
         <% else %>
-        <%= "" %>
-      <% end %>
+          <%= "" %>
+        <% end %>
       <%end%>
     </div>
-    <% if user_signed_in? %>
-     <%= link_to household_orders_path(current_user.household_id), class: "text-decoration-none" do%>
+
+    <% unless user_signed_in? %>
+      <%= link_to "#", class: "text-decoration-none" do%>
         <h1 style="color: white;"><strong>SUPERMARKT</strong></h1>
+        <% end%>
+    <% else %>
+      <% if current_user.household_id? %>
+        <%= link_to household_orders_path(current_user.household_id), class: "text-decoration-none" do%>
+          <h1 style="color: white;"><strong>SUPERMARKT</strong></h1>
         <%end %>
-        <% else %>
-        <%= link_to "#", class: "text-decoration-none" do%>
-      <h1 style="color: white;"><strong>SUPERMARKT</strong></h1>
-      <%end%>
-      <%end%>
+    <%end%>
+    <%end%>
+
     <div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style=>
         <span class="navbar-toggler-icon"></span>
