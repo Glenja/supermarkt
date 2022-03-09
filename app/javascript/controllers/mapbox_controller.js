@@ -60,6 +60,6 @@ export default class extends Controller {
     const allMarkers = this.markersValue;
     allMarkers.push(this.markerValue[0]);
     allMarkers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 0 })
   }
 }
