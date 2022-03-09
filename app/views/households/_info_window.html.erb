@@ -1,5 +1,6 @@
-  <h2><%= location.name %></h2>
-  <p><%= location.address %></p>
-  <% if location.class != Household %>
-    <%= link_to 'Directions', household_route_path(@household, location.id) %>
-  <% end %>
+
+<h2><%= location.name %></h2>
+<p><%= location.address %></p>
+<% if location.class != Household %>
+  <%= link_to 'Directions', household_route_path(@household, location.id), class: 'text-decoration-none' %>
+<% end %>
