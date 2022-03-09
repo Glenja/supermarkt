@@ -1,10 +1,12 @@
-<div class = "maincontainer">
+
+<div class = "formcontainer">
   <%= simple_form_for [current_user, @list] do |f| %>
-  <%= f.input :title %>
+  <%= f.input :title, label: "Name Your List" %>
+  <%=f.label "Which order is this for?" %>
   <%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true %>
-    <p>select an order for your new list</p>
-    <%= f.submit class: "btn btn-main-blue"%>
+    <%= f.submit "New List", class: "btn btn-main-blue", id: "btn-blue-margin"%>
   <% end %>
+</div>
 
 
   <div class="d-flex" style = >
@@ -13,17 +15,10 @@
             <%= link_to user_list_path(current_user, list), class: "text-decoration-none text-dark" do %>
             <div class="card-order my-3">
             <div class="p-5 d-flex justify-content-around" style="background-color: #659B91;">
-            <%= list.user.name.capitalize %>
+            <%= list.title %>
             </div>
           </div>
           <% end %>
         <% end %>
     </div>
   </div>
-</div>
-
-<%= simple_form_for [current_user, @list] do |f| %>
-<%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true%>
-  <p>choose an order for your new list</p>
-  <%= f.submit "New List", class: "btn btn-main-blue"%>
-<% end %>
