@@ -74,7 +74,7 @@ class HouseholdsController < ApplicationController
         id: household.id
       }
     end
-    household_marker = households.select { |household| household[:id] == @household.id }
+    @marker = households.select { |household| household[:id] == @household.id }
     supermarkets = Supermarket.all.geocoded.map do |supermarket|
       {
         lat: supermarket.latitude,
@@ -83,9 +83,7 @@ class HouseholdsController < ApplicationController
         id: supermarket.id
       }
     end
-    supermarket_marker = supermarkets.select { |supermarket| supermarket[:id] == @supermarket.id }
-
-    @markers = [household_marker.first, supermarket_marker.first]
+    @markers = supermarkets.select { |supermarket| supermarket[:id] == @supermarket.id }
   end
 
   private
