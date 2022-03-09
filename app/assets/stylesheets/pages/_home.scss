@@ -19,7 +19,12 @@
   text-align: center;
 
 }
-
+.buttonbox-2{
+  margin-top: 100px;
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
 
 .buttonbox{
  margin-top: 250px;
@@ -33,7 +38,7 @@
 }
 
 .hometext{
-  margin-top: 300px;
+  padding-top: 300px;
   text-align: center;
   font-size: xx-large;
   color: white;
