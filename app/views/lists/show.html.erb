@@ -40,5 +40,5 @@
       <% end %>
     <% end %>
   </div>
-  <%= button_to "Back to order", household_order_path(household_id: @list.order.household.id, id: @list.order), method: "get", class: 'btn-sm-blue'%>
+  <%= button_to "Go to Order", household_order_path(household_id: @list.order.household.id, id: @list.order), method: "get", class: 'btn-sm-blue'%>
 </div>
