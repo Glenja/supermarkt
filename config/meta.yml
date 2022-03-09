@@ -1,0 +1,5 @@
+meta_product_name: "Supermarkt"
+meta_title: "Streamline the group shop. Vorsprung durch Supermarkt!"
+meta_description: "Multiple users can add products to a single shopping basket with their chosen supermarket, with multiple features to streamline the group food shop"
+meta_image: "pexels-photo-1508668.jpeg" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
