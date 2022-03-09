@@ -23,7 +23,7 @@ class HouseholdsController < ApplicationController
     @household.housemates << @housemate
     if @household.save
       current_user.save
-      redirect_to household_path(@household)
+      redirect_to household_orders_path(@household)
     else
       render :new
     end
