@@ -23,7 +23,7 @@ class HouseholdsController < ApplicationController
     @household.housemates << @housemate
     if @household.save
       current_user.save
-      redirect_to household_path(@household)
+      redirect_to household_orders_path(@household)
     else
       render :new
     end
@@ -53,7 +53,7 @@ class HouseholdsController < ApplicationController
         id: household.id
       }
     end
-    household_marker = households.select { |household| household[:id] == @household.id }
+    @marker = households.select { |household| household[:id] == @household.id }
     @markers = Supermarket.all.geocoded.map do |supermarket|
       {
         lat: supermarket.latitude,
@@ -61,8 +61,6 @@ class HouseholdsController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: { location: supermarket })
       }
     end
-
-    @markers << household_marker.first
   end
 
   def route
@@ -76,7 +74,7 @@ class HouseholdsController < ApplicationController
         id: household.id
       }
     end
-    household_marker = households.select { |household| household[:id] == @household.id }
+    @marker = households.select { |household| household[:id] == @household.id }
     supermarkets = Supermarket.all.geocoded.map do |supermarket|
       {
         lat: supermarket.latitude,
@@ -85,9 +83,7 @@ class HouseholdsController < ApplicationController
         id: supermarket.id
       }
     end
-    supermarket_marker = supermarkets.select { |supermarket| supermarket[:id] == @supermarket.id }
-
-    @markers = [household_marker.first, supermarket_marker.first]
+    @markers = supermarkets.select { |supermarket| supermarket[:id] == @supermarket.id }
   end
 
   private
