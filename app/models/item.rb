@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :list
 
-  def done
+  def mark_complete!
     self.done = true
   end
 

@@ -171,9 +171,9 @@
               <%=array[0].name%>
             </div>
             <% total_price = 0 %>
-            <% array[1].each { |item|  total_price += item.price} %>
+            <% array[1].each { |item|  total_price += item.price * item.quantity} %>
             <div class = "item-owed">
-              £<%= total_price.to_f%>
+              £<%= total_price.to_f.round(2)%>
             </div>
         <% end %>
         </div>
