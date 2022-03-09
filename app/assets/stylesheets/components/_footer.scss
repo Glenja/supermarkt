@@ -11,6 +11,7 @@
   bottom: 0;
   width: 100%;
   z-index: 1000;
+  margin-top: 10px;
 }
 .footer-links {
   display: flex;
@@ -21,7 +22,7 @@
   opacity: 0.85;
   text-decoration: none;
   font-size: 24px;
-  padding: 50px;
+  padding: 25px;
 }
 .footer-links a:hover {
   opacity: 1;
