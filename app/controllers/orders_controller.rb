@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   def index
     @household = Household.find(params[:household_id])
     @housemates = Housemate.where(household_id: @household.id)
-    @orders = Order.all
+    @orders = Order.where(household_id: @household.id)
     @current_orders = @orders.select { |order| order.end_date >= Date.today}
     @previous_orders = @orders.select { |order| order.end_date < Date.today}
     @order = Order.new
