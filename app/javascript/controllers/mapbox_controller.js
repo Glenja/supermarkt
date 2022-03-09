@@ -4,7 +4,8 @@ import mapboxgl from "mapbox-gl"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    marker: Array
   }
 
   connect() {
@@ -17,6 +18,7 @@ export default class extends Controller {
       zoom: 5
     });
 
+    this.#addMarkerToMap()
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
     if (this.element.id === "directions") {
@@ -33,6 +35,16 @@ export default class extends Controller {
     );
   }
 
+  #addMarkerToMap() {
+    this.markerValue.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window)
+      new mapboxgl.Marker({ "color": "#b40219" })
+        .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
+        .addTo(this.map)
+    });
+  }
+
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
@@ -45,7 +57,9 @@ export default class extends Controller {
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    const allMarkers = this.markersValue;
+    allMarkers.push(this.markerValue[0]);
+    allMarkers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 }
