@@ -1,3 +1,5 @@
   <h2><%= location.name %></h2>
   <p><%= location.address %></p>
-  <%= link_to 'Directions', household_route_path(@household, location.id) %>
+  <% if location.class != Household %>
+    <%= link_to 'Directions', household_route_path(@household, location.id) %>
+  <% end %>
