@@ -14,7 +14,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new
+    @list = List.new(list_params)
     @list.user = current_user
     @list.order = Order.find(params[:list][:order_id])
     if @list.save
@@ -31,6 +31,10 @@ class ListsController < ApplicationController
   def update
   end
 
+private
 
+def list_params
+  params.require(:list).permit(:title, :description, :price)
+end
 
 end
