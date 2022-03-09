@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @household = Household.find(@order.household.id)
+    @household = Household.find(params[:household_id])
     @users = User.where(household_id: @order)
     @lists = List.where(order_id: @order)
     @all_items = []
