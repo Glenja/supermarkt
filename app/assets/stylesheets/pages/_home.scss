@@ -22,10 +22,13 @@
 
 
 .buttonbox{
- margin-top: 250px;
-  display: flex;
+ display: flex;
  flex-direction: column;
  align-items: center;
+}
+
+.margin250{
+  margin-top: 250px;
 }
 
 .buttonbox a{

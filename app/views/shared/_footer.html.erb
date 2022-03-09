@@ -10,9 +10,17 @@
       <% end %>
     <% end %>
 
-      <%= link_to household_orders_path(current_user.household_id) do %>
+    <% unless user_signed_in? %>
+      <%= link_to "#" do %>
         <i class="fas fa-house-user"></i>
       <% end %>
+      <%else%>
+      <% if current_user.household_id? %>
+       <%= link_to household_orders_path(current_user.household_id) do %>
+        <i class="fas fa-house-user"></i>
+      <% end %>
+      <%end%>
+    <%end%>
 
       <% unless user_signed_in? %>
         <%= link_to "#" do %>
