@@ -17,7 +17,7 @@
           <%= f.input :category, :label => "Aisle" %>
           <%= f.input :price, :label => "Price (£)", as: :integer %>
         </span>
-        <%= f.submit "Add item", class: "btn-sm-blue" %>
+        <%= f.submit "Add item", class: "btn-sm-green" %>
       <% end %>
     </div>
   </div>
@@ -40,5 +40,5 @@
       <% end %>
     <% end %>
   </div>
-  <%= button_to "Back to order", household_order_path(household_id: @list.order.household.id, id: @list.order), method: "get", class: 'btn-sm-green'%>
+  <%= button_to "Back to order", household_order_path(household_id: @list.order.household.id, id: @list.order), method: "get", class: 'btn-sm-blue'%>
 </div>
