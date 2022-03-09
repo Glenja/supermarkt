@@ -2,11 +2,11 @@
 
 
 .signup{
+  margin: 0;
   height: 100vh;
-  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  // opacity: 0.5;
+  // background-position: center bottom;
 }
 
 .textbox{
@@ -17,20 +17,27 @@
   height: 100vh;
   justify-content: center;
   text-align: center;
+
 }
 
 
 .buttonbox{
- display: flex;
+ margin-top: 250px;
+  display: flex;
  flex-direction: column;
  align-items: center;
 }
 
+.buttonbox a{
+  margin: 10px;
+}
+
 .hometext{
+  margin-top: 300px;
   text-align: center;
   font-size: xx-large;
   color: white;
-
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 a {

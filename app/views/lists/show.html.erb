@@ -1,5 +1,5 @@
 <div class="container-list">
-  <h1 class="center-text"><%= @list.user.name.capitalize %>'s list</h1>
+  <h1 class="center-text"><%= @list.title %></h1>
   <div class="list-form">
     <div class="form" data-controller="items"  data-items-key-value=<%= ENV["SPOONACULAR_API_KEY"] %>>
       <%= simple_form_for [ @user, @list, @item ] do |f| %>
