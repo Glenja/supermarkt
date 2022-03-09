@@ -35,7 +35,7 @@
     <%# list by category %>
 
   <% if @items_category.empty? %>
-    <p>please create a list</p>
+    <p>Please create a list</p>
   <% else %>
     <div class="" data-order-show-target="category">
       <div class= "categoryHeader1 category-box-shadow" data-order-show-target="stickyTop">
@@ -184,12 +184,12 @@
       <div class = "btn-container">
         <%= link_to household_map_path(@household), class:'text-decoration-none' do %>
           <div class="btn-main-green  text-decoration-none">
-            Let's shop
+            Let's Shop!
           </div>
         <% end %>
       </div>
       <div class="btn-container">
-        <%= link_to household_path(@household), class:'text-decoration-none' do %>
+        <%= link_to household_orders_path(@household), class:'text-decoration-none' do %>
           <div class="btn-main-blue  text-decoration-none">
             Back to Household
           </div>
