@@ -163,8 +163,8 @@ puts "housemates created"
 
 
 # Supermarkets around Leyton
-Supermarket.create(name: 'Tesco', address: 'e10 5na')
-Supermarket.create(name: 'Asda', address: 'e10 5nh')
-Supermarket.create(name: 'Waitrose', address: 'e18 2na')
-Supermarket.create(name: "Sainsbury's", address: 'e17 7jy')
-Supermarket.create(name: 'Morrissons', address: 'e15 1hp')
+Supermarket.create(name: 'Tesco', address: '401 High Rd Leyton, London E10 5NA')
+Supermarket.create(name: 'Asda', address: 'Marshall Rd, London E10 5NH')
+Supermarket.create(name: 'Waitrose', address: '92-96 High Rd, London E18 2NA')
+Supermarket.create(name: "Sainsbury's", address: '112 High St, London E17 7JY')
+Supermarket.create(name: 'Morrissons', address: 'The Grove, London E15 1HP')

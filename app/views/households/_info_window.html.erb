@@ -1,5 +1,5 @@
 
-<h2><%= location.name %></h2>
+<h2 class="mt-3"><%= location.name %></h2>
 <p><%= location.address %></p>
 <% if location.class != Household %>
   <%= link_to 'Directions', household_route_path(@household, location.id), class: 'btn btn-popup-green text-decoration-none' %>
