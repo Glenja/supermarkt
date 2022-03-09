@@ -23,7 +23,8 @@
             <% end %>
         </div>
         <div class="card-order-infos justify-content-end">
-          <h2>Deadline: <%= order.end_date %></h2>
+          <% d = order.end_date %>
+          <h2>Deadline: <%= d.strftime("%A %e %B") %></h2>
         </div>
       </div>
     <% end %>
