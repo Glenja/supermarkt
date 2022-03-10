@@ -1,7 +1,33 @@
 .formcontainer{
   margin: 0px 8px;
+  color: #659B91;
 }
 
 #list_order_id{
   background-color: #F4F4F4;
+}
+
+#list_order_id{
+ width: 96vw;
+ border-radius: 3px;
+ border-color:  #cdcbcb;
+ height: 39px;
+
+}
+
+select {
+  font-size: 30px;
+  border-color: red;
+  width: 30px;
+}
+
+select > option > innerText {
+  border-color: pink;
+  color: pink;
+  text-shadow: 2px 2px green;
+  background-color: pink;
+}
+
+.optioncolor {
+  background-color: pink;
 }
