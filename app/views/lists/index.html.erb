@@ -5,7 +5,7 @@
   <%= f.input :title, :label => 'List Name' %>
   <p>Select an order for your new list</p>
   <%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true %>
-    <%= f.submit class: "btn btn-main-blue"%>
+    <%= f.submit class: "btn btn-main-blue-margin"%>
   <% end %>
 
 
