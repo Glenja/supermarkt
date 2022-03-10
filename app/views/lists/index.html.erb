@@ -7,7 +7,7 @@
     <%= f.submit class: "btn btn-main-blue-margin"%>
   <% end %>
 
-    <% @current_user.lists.each_with_index do |list, i| %>
+    <% @lists_by_created.each_with_index do |list, i| %>
         <div class="my-3" style = "flex-direction: column">
           <%= link_to user_list_path(current_user, list), class: "text-decoration-none text-dark" do %>
           <div class="card-trip">
