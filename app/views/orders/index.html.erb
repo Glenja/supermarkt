@@ -10,10 +10,10 @@
       </button>
   </div>
 
-  <% @orders.each do |order| %>
+  <% @orders.sort_by { |order| order.end_date}.each do |order| %>
     <%= link_to household_order_path(@household, order), class: "text-decoration-none text-dark" do %>
       <div class="card-order my-3">
-        <div class="p-5 d-flex justify-content-around" style="background-color: #659B91;">
+        <div class="p-4 d-flex justify-content-around" style="background-image: linear-gradient(315deg, #659B91 0%, #233329 84%);">
             <% @housemates.each do |h| %>
               <% if h.user.photo.attached?  %>
                 <%= cl_image_tag h.user.photo.key, class: "card-order-user avatar-large" %>
@@ -22,9 +22,9 @@
               <% end %>
             <% end %>
         </div>
-        <div class="card-order-infos justify-content-end">
+        <div class="card-order-infos">
           <% d = order.end_date %>
-          <h2>Deadline: <%= d.strftime("%A %e %B") %></h2>
+          <h6 class="m-0"><%= d.strftime("%A %e %B") %></strong></h6>
         </div>
       </div>
     <% end %>
