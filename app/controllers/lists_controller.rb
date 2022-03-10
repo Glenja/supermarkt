@@ -4,6 +4,7 @@ class ListsController < ApplicationController
     @lists = List.all
     @list = List.new
     @orders = Order.where(household_id: current_user.household_id)
+    @lists_by_created = List.where(user_id: params[:user_id]).sort_by(&:created_at)
   end
 
   def show
