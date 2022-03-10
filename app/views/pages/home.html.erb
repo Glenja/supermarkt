@@ -5,7 +5,11 @@
   </div>
     <div class="buttonbox margin250">
       <% if user_signed_in? %>
-        <%= link_to "Get Started", new_household_path, class: "btn btn-main-blue" %>
+        <% if current_user.household %>
+          <%= link_to "Get Started", household_orders_path(current_user.household), class: "btn btn-main-blue" %>
+        <% else %>
+          <%= link_to "Get Started", new_household_path, class: "btn btn-main-blue" %>
+        <% end %>
       <%end%>
       <% if user_signed_in? %>
         <%= ""%>
