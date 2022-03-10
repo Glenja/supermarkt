@@ -1,7 +1,7 @@
 .card-order {
   overflow: hidden;
   background: rgb(255, 135, 101,);
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
   opacity: .9;
 }
 
@@ -27,7 +27,7 @@
 .card-order .card-order-infos {
   padding: 16px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-end;
   position: relative;
   color: white;
