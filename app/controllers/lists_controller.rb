@@ -4,7 +4,7 @@ class ListsController < ApplicationController
     @lists = List.all
     @list = List.new
     @orders = Order.where(household_id: current_user.household_id)
-    @images = ["shopping 1", "shopping 2", "shopping 3", "shopping 4", "shopping 5"]
+    @lists_by_created = List.where(user_id: params[:user_id]).sort_by(&:created_at)
   end
 
   def show
