@@ -1,25 +1,23 @@
 <div class = "maincontainer">
   <h2 class= "center-text">New list</h2>
-
   <%= simple_form_for [current_user, @list] do |f| %>
-  <%= f.input :title %>
+  <%= f.input :title, :label => 'List Name' %>
+  <p>Select an order for your new list</p>
   <%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true %>
-    <p>select an order for your new list</p>
-    <%= f.submit class: "btn btn-main-blue"%>
+    <%= f.submit class: "btn btn-main-blue-margin"%>
   <% end %>
 
-
-  <div class="d-flex" style = >
-      <div class="container" style = "flex-direction: column">
-        <% @current_user.lists.each do |list| %>
-            <%= link_to user_list_path(current_user, list), class: "text-decoration-none text-dark" do %>
-            <div class="card-order my-3">
-            <div class="p-5 d-flex justify-content-around" style="background-color: #659B91;">
-            <%= list.user.name.capitalize %>
+    <% @current_user.lists.each_with_index do |list, i| %>
+        <div class="my-3" style = "flex-direction: column">
+          <%= link_to user_list_path(current_user, list), class: "text-decoration-none text-dark" do %>
+          <div class="card-trip">
+            <%= image_tag asset_path("shopping #{i%5}")%>
+            <div class="card-trip-infos">
+                <h2><%=list.title%></h2>
+                <p class="card-trip-pricing">Created <%d = list.created_at %><%= d.strftime("%A %e %B") %></p>
             </div>
           </div>
+        </div>
           <% end %>
-        <% end %>
-    </div>
-  </div>
+    <% end %>
 </div>
