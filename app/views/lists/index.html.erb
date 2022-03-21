@@ -1,10 +1,12 @@
 <div class = "maincontainer">
   <h2 class= "center-text">New list</h2>
   <%= simple_form_for [current_user, @list] do |f| %>
-  <%= f.input :title, :label => 'List Name' %>
+  <%= f.input :title, :label => 'Give your list a name' %>
   <p>Select an order for your new list</p>
   <%= f.collection_select :order_id, User.find(params[:user_id]).household.orders, :id, :end_date, include_blank: true %>
+    <div class = "btn-div">
     <%= f.submit class: "btn btn-main-blue-margin"%>
+    </div>
   <% end %>
 
     <% @lists_by_created.each_with_index do |list, i| %>
